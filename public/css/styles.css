@@ -1,0 +1,123 @@
+html
+{
+  margin: 0;
+}
+
+/* NAVIGATION */
+.header-wrapper
+{
+  background-color: #374785;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.1rem;
+  display: flex;
+}
+
+.user-form-list a
+{
+  color: #ffffff;
+}
+
+.navigation
+{
+  padding-left: 2rem;
+  padding-right: 10rem;
+  padding-top: 0.6rem;
+}
+
+.nav-list
+{
+  padding-inline-start: 0;
+}
+
+.nav-list li
+{
+  margin-right: 1rem;
+  display: inline-flex;
+}
+
+.nav-list a
+{
+  color: #ffffff;
+}
+
+.nav-list a:hover
+{
+  color: #a8d0e6;
+  text-decoration: none;
+}
+
+.container
+{
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+/* HOME */
+.row
+{
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #dddddd;
+}
+
+.table
+{
+  margin-top: 3rem;
+}
+
+.search .table td
+{
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  vertical-align: middle;
+}
+
+.form-control
+{
+  width: auto;
+}
+
+.dates
+{
+  width: 100px !important;
+}
+
+#capacity
+{
+  width: 80px !important;
+}
+
+#submit
+{
+  width: 150px !important;
+}
+
+input
+{
+  height: 100%;
+}
+
+.card
+{
+  margin-top: 2rem !important;
+  border: none !important;
+}
+
+.card-body
+{
+  padding-top: 0.2rem !important;
+  padding-left: 0 !important;
+}
+
+.btn
+{
+  background-color: #374785 !important;
+  border-color: #374785 !important;
+}
+
+.btn:hover
+{
+  background-color: #24305e !important;
+}
