@@ -10,6 +10,7 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const moment = require('moment');
 
 const { envPort, sessionKey } = require('./config');
 
@@ -40,6 +41,11 @@ app.engine('hbs', exphbs({
   defaultView: 'main',
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials')
+  
+  dateFormat: function(context, block) {
+      var f = block.hash.format || "MMMM DD YYYY, h:mm a";
+      return moment(new Date(context), "YYYY-MM-DDTHH:mm:ss.SSSZ").format(f);
+    }
 }));
 
 // set the view engine to the express-handlebar engine
