@@ -40,7 +40,7 @@ app.engine('hbs', exphbs({
   extname: 'hbs',
   defaultView: 'main',
   layoutsDir: path.join(__dirname, '/views/layouts'),
-  partialsDir: path.join(__dirname, '/views/partials')
+  partialsDir: path.join(__dirname, '/views/partials'),
   
   dateFormat: function(context, block) {
       var f = block.hash.format || "MMMM DD YYYY, h:mm a";
