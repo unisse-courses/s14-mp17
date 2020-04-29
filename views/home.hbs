@@ -1,0 +1,65 @@
+<div class="row search">
+
+  <!-- SEARCH -->
+  <div class="col-sm-12">
+    <h4>{{title}}</h4>
+    <p>From cozy rooms and warm baths to great food and funky cities.</p>
+    <form action="/searchresults">
+      <table class="table table-borderless">
+        <tr>
+          <td><label>Select a Hotel</label></td>
+          <td><label>Check In</label></td>
+          <td><label>Check Out</label></td>
+          <td><label>Capacity</label></td>
+        </tr>
+        <tr>
+          <td>
+            <select class="form-control" id="hotelSearch" name="hotelSearch">
+              <option value="bayfront" name="Bayfront Hotel">Bayfront Hotel Cebu</option>
+              <option value="belmont" name="Belmont Hotel">Belmont Hotel Boracay</option>
+              <option value="dusit-thani" name="Dusit-Thani">Dusit Thani Mactan Cebu</option>
+              <option value="heritage" name="Heritage Hotel">Heritage Hotel Manila</option>
+            </select>
+          </td>
+          <td class="dates">
+            <input type="date" name="checkin" class="form-control" id="checkin">
+          </td>
+          <td class="dates">
+            <input type="date" name="checkout" class="form-control" id="checkout">
+          </td>
+          <td class="cap">
+            <select class="form-control" id="capacity">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+          </td>
+          <td>
+            <button class="btn btn-primary" id="showSearchBooking" type="submit">Search</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- VIEW AVAILABLE HOTELS -->
+<div class="row available-hotels">
+  <div class="col-sm-12">
+    <h4>Available Hotels</h4>
+    {{#if hotels}}
+    <!-- looping through lists -->
+    {{#each hotels}}
+    <div class="row hotels">
+      <div class="col s10">
+        <p class="hotelname">{{this.name}}</p>
+        <p>{{this.address}}</p>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p>No available hotels</p>
+    {{/if}}
+  </div>
+</div>
