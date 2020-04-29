@@ -12,6 +12,7 @@ const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
 const moment = require('moment');
 
+// imports for deployment
 const { envPort, sessionKey } = require('./config');
 
 // import the routes for the collections in the database

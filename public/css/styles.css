@@ -61,7 +61,7 @@ html
 }
 
 /* Home Page */
-.row
+.row-container
 {
   padding-top: 3rem;
   padding-bottom: 2rem;
