@@ -9,6 +9,7 @@ exports.registerUser = (req, res) => {
     if(errors.isEmpty())
     {
         const { name, email, password } = req.body;
+        
         userModel.getOne( { email: email }, (err, result) => {
             if(result)
             {
@@ -23,7 +24,7 @@ exports.registerUser = (req, res) => {
                 // hash password
                 bcrypt.hash(password, saltRounds, (err, hashed) => {
                     const newUser = { name, email, password: hashed };
-                    
+
                     userModel.create(newUser, (err, user) => {
                         if(err)
                         {

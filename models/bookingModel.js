@@ -15,10 +15,8 @@ const bookingModel = mongoose.model('bookings', bookingSchema);
 module.exports = bookingModel;
 
 // get all bookings from the collection
-exports.getAllBookings = function(sort, next) {
+exports.getAll = function(sort, next) {
     bookingModel.find({}).sort(sort).exec(function(err, result) {
-        if(err) throw err;
-
         var bookingObjects = [];
         result.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
@@ -40,8 +38,6 @@ exports.createBooking = function(obj, next) {
 // search a booking
 exports.searchBooking = function(query, next) {
     bookingModel.find(query, function(err, bookings) {
-        if(err) throw err;
-
         var bookingObjects = [];
         result.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
@@ -54,9 +50,6 @@ exports.searchBooking = function(query, next) {
 // update a booking
 exports.updateBooking = function(filter, update, options) {
     bookingModel.findOneAndUpdate(filter, update, options, function(err, result) {
-        if(err) throw err;
-        console.log('update successful! [booking]');
-
         next(err, result);
     });
 };
@@ -64,9 +57,6 @@ exports.updateBooking = function(filter, update, options) {
 // delete a booking
 exports.deleteBooking = function(filter, next) {
     bookingModel.deleteOne(filter, function(err, result) {
-        if(err) throw err;
-        console.log('deletion complete! [booking]');
-
         next(err, result);
     });
 };

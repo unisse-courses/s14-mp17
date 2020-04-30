@@ -24,8 +24,9 @@ const bookingRouter = require('./routes/bookingRoutes');
 const authRouter = require('./routes/authRoutes');
 const indexRouter = require('./routes/indexRoutes');
 
-// user private route
+// other routes
 const userPrivateRouter = require('./routes/userPrivateRoutes');
+const searchResultsRouter = require('./routes/searchRoutes');
 
 // create the express application
 const app = express();
@@ -81,6 +82,8 @@ app.use((req, res, next) => {
 // USER
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
+app.use('/', searchResultsRouter); // search results
+
 
 // login an admin
 app.get('/admin', function(req, res) {
