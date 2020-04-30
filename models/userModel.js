@@ -34,14 +34,14 @@ exports.create = function(obj, next) {
 
 // retrieving a user based on ID
 exports.getById = function(id, next) {
-    User.findById(id, function(err, user) {
+    userModel.findById(id, function(err, user) {
       next(err, user);
     });
 };
   
 // retrieving just ONE user based on a query (first one)
 exports.getOne = function(query, next) {
-    User.findOne(query, function(err, user) {
+    userModel.findOne(query, function(err, user) {
       next(err, user);
     });
 };
