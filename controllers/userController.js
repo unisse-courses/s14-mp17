@@ -23,6 +23,7 @@ exports.registerUser = (req, res) => {
                 // hash password
                 bcrypt.hash(password, saltRounds, (err, hashed) => {
                     const newUser = { name, email, password: hashed };
+                    
                     userModel.create(newUser, (err, user) => {
                         if(err)
                         {
