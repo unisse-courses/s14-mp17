@@ -78,7 +78,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   next();
-})
+});
 
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route

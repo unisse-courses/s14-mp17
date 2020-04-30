@@ -27,7 +27,7 @@ router.get('/admin', isPublic, (req, res) => {
 // POST methods for form submissions
 router.post('/register', isPublic, registerValidation, userController.registerUser);
 router.post('/login', isPublic, loginValidation, userController.loginUser);
-router.post('/admin', isPublic, adminValidation);
+router.post('/admin', isPublic, adminValidation, userController.adminLogin);
 
 // logout
 //router.get('/logout', isPrivate, userController.logout);

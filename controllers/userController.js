@@ -9,7 +9,7 @@ exports.registerUser = (req, res) => {
     if(errors.isEmpty())
     {
         const { name, email, password } = req.body;
-        
+
         userModel.getOne( { email: email }, (err, result) => {
             if(result)
             {
@@ -103,6 +103,14 @@ exports.loginUser = (req, res) => {
         const messages = errors.array().map((item) => item.msg);
         req.flash('error_msg', messages.join(' '));
         res.redirect('/login');
+    }
+};
+
+// admin login
+exports.adminLogin = (req, res) => {
+    if(req.body.username == "admin" && req.body.password == "1234")
+    {
+        res.redirect('/adminmanagebooking');
     }
 };
 
