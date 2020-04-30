@@ -17,9 +17,17 @@ router.get('/register', isPublic, (req, res) => {
     });
 });
 
+// GET admin to display login page for admin
+router.get('/admin', isPublic, (req, res) => {
+    res.render('admin', {
+        title: 'Admin Login',
+    });
+});
+
 // POST methods for form submissions
 router.post('/register', isPublic, registerValidation, userController.registerUser);
 router.post('/login', isPublic, loginValidation, userController.loginUser);
+router.post('/admin', isPublic);
 
 // logout
 //router.get('/logout', isPrivate, userController.logout);

@@ -81,7 +81,6 @@ app.use((req, res, next) => {
 // USER
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
-//app.use('/', userPrivateRouter); // private menu for the user when logged in
 
 // login an admin
 app.get('/admin', function(req, res) {

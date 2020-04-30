@@ -21,43 +21,6 @@ $(document).ready(function ()
         parentDiv.append(userInfo);
     }
 
-    $('#register').click(function() {
-        //get data from the form
-        var firstname = $('#firstname').val();
-        var lastname = $('#lastname').val();
-        var email = $('#email').val();
-        var password = $('#password').val();
-        var repassword = $('#password').val();
-
-        var newUser = {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password,
-            repassword: repassword
-        };
-
-        $.post('register', newUser, function(data, status) {
-            console.log(data);
-            if(data.success)
-            {
-                $('#msg').text(data.message);
-                $('#msg').addClass('success');
-
-                $('#firstname').val('');
-                $('#lastname').val('');
-                $('#email').val('');
-                $('#password').val('');
-                $('#repassword').val('');
-            }
-            else
-            {
-                $('#msg').text(data.message);
-                $('#msg').addClass('fail');
-            }
-        });
-    });
-
     // #showAllUsers POST call
     $('#showAllUsers').click(function() {
         $.post('showAllUsers', {}, function(data, status) {
