@@ -30,5 +30,13 @@ const loginValidation = [
     body('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters.")
 ];
 
+const adminValidation = [
+    // username should not be empty
+    body('username').not().isEmpty().withMessage("Username is required."),
+
+    // password should not be empty
+    body('password').not().isEmpty().withMessage("Password is required.")
+];
+
 // update exports
-module.exports = { registerValidation, loginValidation };
+module.exports = { registerValidation, loginValidation, adminValidation };

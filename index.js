@@ -79,16 +79,13 @@ app.use((req, res, next) => {
   next();
 })
 
-// USER
+// USER - public
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
 app.use('/', searchResultsRouter); // search results
 
+// ADMIN - private
 
-// login an admin
-app.get('/admin', function(req, res) {
-  res.render('admin', {title: 'Login As Admin'});
-});
 
 // view all bookings - ADMIN
 app.get('/adminmanagebooking', function(req, res) {
