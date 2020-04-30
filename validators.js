@@ -1,11 +1,8 @@
 const { body } = require('express-validator');
 
 const registerValidation = [
-    // firstname should not be empty
-    body('firstname').not().isEmpty().withMessage("Firstname is required."),
-
-    // lastname should not be empty
-    body('lastname').not().isEmpty().withMessage("Lastname is required."),
+    // name should not be empty
+    body('name').not().isEmpty().withMessage("Name is required."),
 
     // email should not be empty and must be a valid email
     body('email').not().isEmpty().withMessage("Email is required.")

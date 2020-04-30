@@ -8,7 +8,7 @@ exports.registerUser = (req, res) => {
 
     if(errors.isEmpty())
     {
-        const { firstname, lastname, email, password } = req.body;
+        const { name, email, password } = req.body;
         userModel.getOne( { email: email }, (err, result) => {
             if(result)
             {
@@ -22,7 +22,7 @@ exports.registerUser = (req, res) => {
                 const saltRounds = 10;
                 // hash password
                 bcrypt.hash(password, saltRounds, (err, hashed) => {
-                    const newUser = { firstname, lastname, email, password: hashed };
+                    const newUser = { name, email, password: hashed };
                     userModel.create(newUser, (err, user) => {
                         if(err)
                         {
@@ -110,7 +110,7 @@ exports.logoutUser = (req, res) => {
     {
         req.session.destroy(() => {
             res.clearCookie('connect.sid');
-            res.redirect('/');
+            res.redirect('/login');
         });
     }
 };

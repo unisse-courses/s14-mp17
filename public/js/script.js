@@ -6,16 +6,13 @@ $(document).ready(function ()
     {
         var userInfo = document.createElement('tr');
 
-        var firstnameHeading = document.createElement('td');
-        var lastnameHeading = document.createElement('td');
+        var nameHeading = document.createElement('td');
         var emailAddress = document.createElement('td');
 
-        $(firstnameHeading).addClass('user-table-body');
-        $(lastnameHeading).addClass('user-table-body');
+        $(nameHeading).addClass('user-table-body');
         $(emailAddress).addClass('user-table-body');
 
-        userInfo.append(firstnameHeading);
-        userInfo.append(lastnameHeading);
+        userInfo.append(nameHeading);
         userInfo.append(emailAddress);
 
         parentDiv.append(userInfo);
