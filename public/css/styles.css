@@ -3,7 +3,7 @@ html
   margin: 0;
 }
 
-#login, #register, #post-form {
+#login, #register, #admin {
   margin-top: 1em;
 }
 
