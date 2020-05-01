@@ -1,6 +1,5 @@
 <div id="register" class="row-container form-div">
-  <form class="col s8 offset-s2 card" action="/register" method="POST">
-    <div class="card-content">
+  <form action="/register" method="POST">
       <div class="row">
         <div class="col s12">
           <p class="text-center card-title">{{title}}</p>
@@ -12,36 +11,30 @@
           <input placeholder="Firstname Lastname" type="text" id="name" name="name">
         </div>
       </div>
-
       <div class="row">
         <div class="col s12 input-field">
           <input placeholder="Email Address" type="email" id="email" name="email">
         </div>
       </div>
-
       <div class="row">
         <div class="col s12">
           <input placeholder="Password" type="password" id="password" name="password">
         </div>
       </div>
-
       <div class="row">
         <div class="col s12">
           <input placeholder="Confirm Password" type="password" id="confirmPass" name="confirmPass">
         </div>
       </div>
-
       <div class="row center-align">
         <div class="col s12">
           <button class="waves-effect waves-light btn">Register</button>
         </div>
       </div>
-
       <div class="row center-align">
         <div class="col s12">
           <p>Already have an account?<a href="/login">Login</a>.</p>
         </div>
       </div>
-    </div>
   </form>
 </div>
