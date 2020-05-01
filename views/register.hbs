@@ -1,35 +1,51 @@
-<div class="row-container register">
-  <div class="col-sm-12">
-    <!-- REGISTER FORM -->
-    <div class="form-div">
-        <form action="/register" method="POST">
-            <table>
-                <tr>
-                    <td>
-                        <h4><b>{{title}}</b></h4>
-                        <p>{{> messages}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input class="name" id="name" name="name" type="text" placeholder="Firstname Lastname"></td>
-                </tr>
-                <tr>
-                    <td><input class="email" id="email" type="email" placeholder="Email Address"></td>
-                </tr>
-                <tr>
-                    <td><input class="password" id="password" type="password" placeholder="Password"></td>
-                </tr>
-                <tr>
-                    <td><input class="confirmPass" id="confirmPass" type="password" placeholder="Confirm Password"></td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-primary form-button" id="register">Register</button></td>
-                </tr>
-                <tr>
-                    <td><p>Already have an account? <a href="/login">Login</a></p></td>
-                </tr>
-            </table>
-        </form>
+<div id="register" class="row container">
+  <form class="col s8 offset-s2 card" action="/register" method="POST">
+    <div class="card-content">
+      <div class="row">
+        <div class="col s12">
+          <p class="center-align card-title">Create Your Account</p>
+        </div>
+      </div>
+      {{> messages}}
+      <div class="row">
+        <div class="col s12 input-field">
+          <label for="name">Name</label>
+          <input placeholder="John Appleseed" type="text" id="name" name="name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 input-field">
+          <label for="email">Email Address</label>
+          <input placeholder="email@domain.com" type="email" id="email" name="email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <label for="password">Password</label>
+          <input placeholder="password" type="password" id="password" name="password">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <label for="password">Re-enter password</label>
+          <input placeholder="confirm password" type="password" id="confirmPass" name="confirmPass">
+        </div>
+      </div>
+
+      <div class="row center-align">
+        <div class="col s12">
+          <button class="waves-effect waves-light btn">Sign Up</button>
+        </div>
+      </div>
+
+      <div class="row center-align">
+        <div class="col s12">
+          <p>Already registered? <a href="/login">Login</a>.</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </form>
 </div>
