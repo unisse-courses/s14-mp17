@@ -5,18 +5,11 @@ const { validationResult } = require('express-validator');
 exports.registerUser = (req, res) => {
   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-
-    const messages = errors.array().map((item) => item.msg);
-
-    req.flash('error_msg', messages.join(' '));
-    res.redirect('/register');
-  } 
-  else
+  if (errors.isEmpty())
   {
-    //const { name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-    userModel.getOne({ email: req.body.email }, (err, result) => {
+    userModel.getOne({ email: email }, (err, result) => {
       if (result) 
       {
         console.log(result);
@@ -26,10 +19,10 @@ exports.registerUser = (req, res) => {
       else 
       {
         const saltRounds = 10;
-        bcrypt.hash(req.body.password, saltRounds, (err, hashed) => {
+        bcrypt.hash(password, saltRounds, (err, hashed) => {
           const newUser = {
-            name: req.body.name,
-            email: req.body.email,
+            name: name,
+            email: email,
             password: hashed
           };
 
@@ -46,61 +39,70 @@ exports.registerUser = (req, res) => {
         });
       }
     });
+  } 
+  else
+  {
+    const messages = errors.array().map((item) => item.msg);
+
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/register');
   }
 };
 
 exports.loginUser = (req, res) => {
   const errors = validationResult(req);
 
-  if (errors.isEmpty()) {
-    const {
-      email,
-      password
-    } = req.body;
+  if(errors.isEmpty()) 
+  {
+    const { email, password } = req.body;
 
     userModel.getOne({ email: email }, (err, user) => {
-      if (err) {
-        // Database error occurred...
+      if(err)
+      {
         req.flash('error_msg', 'Something happened! Please try again.');
         res.redirect('/login');
-      } else {
-        // Successful query
-        if (user) {
-          // User found!
-          // Check password with hashed value in the database
+      } 
+      else 
+      {
+        if(user)
+        {
           bcrypt.compare(password, user.password, (err, result) => {
-            // passwords match (result == true)
-            if (result) {
-              // Update session object once matched!
+            if (result)
+            {
               req.session.user = user._id;
               req.session.name = user.name;
 
               console.log(req.session);
 
               res.redirect('/');
-            } else {
-              // passwords don't match
+            } 
+            else
+            {
               req.flash('error_msg', 'Incorrect password. Please try again.');
               res.redirect('/login');
             }
           });
-        } else {
+        }
+        else
+        {
           // No user found
           req.flash('error_msg', 'No registered user with that email. Please register.');
           res.redirect('/register');
         }
       }
     });
-  } else {
+  }
+  else
+  {
     const messages = errors.array().map((item) => item.msg);
-
     req.flash('error_msg', messages.join(' '));
     res.redirect('/login');
   }
 };
 
 exports.logoutUser = (req, res) => {
-  if (req.session) {
+  if (req.session) 
+  {
     req.session.destroy(() => {
       res.clearCookie('connect.sid')
       res.redirect('/login')
@@ -114,18 +116,23 @@ exports.adminLogin = (req, res) => {
     {
         res.redirect('/adminmanagebooking');
     }
+    else 
+    {
+        req.flash('error_msg', 'An error has occurred. Please try again.');
+        res.redirect('/admin');
+    }
 };
 
 exports.getAllUsers = (req, res) => {
-    userModel.getAllUsers({name: 1}, function(users) {
+    userModel.getAll({name: 1}, function(users) {
         res.render('adminmanageuser', {title: 'Manage Users', users: users});
     })
 };
 
 exports.searchUser = (req, res) => {
-    var pattern = '^' + req.body.firstname + ' ' + req.body.lastname;
+    var pattern = '^' + req.body.name;
     var query = {name: {$regex: pattern}};
-    userModel.searchUser(query, function(users) {
+    userModel.search(query, function(users) {
         res.send(users);
     });
 };
