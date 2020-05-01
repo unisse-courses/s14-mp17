@@ -179,7 +179,13 @@ input
 .red-text
 {
   color: red;
-  background-color: rgb(255, 119, 119);
+  padding-left: 1rem;
+}
+
+.green-text
+{
+  color: green;
+  padding-left: 1rem;
 }
 
 .search-results .col-sm-12
