@@ -5,15 +5,13 @@ const registerValidation = [
     body('name').not().isEmpty().withMessage("Name is required."),
 
     // email should not be empty and must be a valid email
-    body('email').not().isEmpty().withMessage("Email is required.")
-    .isEmail().withMessage("Please provide a valid email."),
+    body('email').not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email."),
 
     // password needs to be minimum 8 characters
     body('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters."),
 
     // confirm password needs to be minimum 8 characters AND must match req.body.password
-    body('confirmPass').isLength({ min: 8 }).withMessage("Password must be at least 8 characters.")
-    .custom((value, { req }) => {
+    body('confirmPass').isLength({ min: 8 }).withMessage("Password must be at least 8 characters.").custom((value, { req }) => {
         if(value !== req.body.password) {
             throw new Error("Passwords do not match.");
         }
@@ -23,8 +21,7 @@ const registerValidation = [
 
 const loginValidation = [
     // email should not be empty and must be a valid email
-    body('email').not().isEmpty().withMessage("Email is required.")
-    .isEmail().withMessage("Please provide a valid email."),
+    body('email').not().isEmpty().withMessage("Email is required.").isEmail().withMessage("Please provide a valid email."),
 
     // password needs to be minimum 8 characters
     body('password').isLength({ min: 8 }).withMessage("Password must be at least 8 characters.")
