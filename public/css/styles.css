@@ -149,7 +149,7 @@ input
 .form-div input
 {
   display: block;
-  width: 100%;
+  width: 70%;
   height: calc(1.5rem + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -169,7 +169,7 @@ input
 
 .form-button
 {
-  width: 100%;
+  width: 60%;
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 1rem;
