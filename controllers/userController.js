@@ -5,7 +5,15 @@ const { validationResult } = require('express-validator');
 exports.registerUser = (req, res) => {
   const errors = validationResult(req);
 
-  if (errors.isEmpty()) {
+  if (!errors.isEmpty()) {
+
+    const messages = errors.array().map((item) => item.msg);
+
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/register');
+  } 
+  else
+  {
     const { name, email, password } = req.body;
 
     userModel.getOne({ email: email }, (err, result) => {
@@ -38,12 +46,6 @@ exports.registerUser = (req, res) => {
         });
       }
     });
-  } 
-  else {
-    const messages = errors.array().map((item) => item.msg);
-
-    req.flash('error_msg', messages.join(' '));
-    res.redirect('/register');
   }
 };
 
