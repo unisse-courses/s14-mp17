@@ -15,12 +15,10 @@ const moment = require('moment');
 // imports for deployment
 const { envPort, sessionKey } = require('./config');
 
-// user authentication routes
+// other routes
 const authRouter = require('./routes/authRoutes');
 const indexRouter = require('./routes/indexRoutes');
-
-// other routes
-const userPrivateRouter = require('./routes/userPrivateRoutes');
+const userRouter = require('./routes/userRoutes');
 const searchResultsRouter = require('./routes/searchRoutes');
 const adminRouter = require('./routes/adminRoutes');
 
@@ -83,5 +81,5 @@ app.use((req, res, next) => {
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
 app.use('/searchresults', searchResultsRouter); // search results
-app.use('/managebooking', userPrivateRouter); // user routes when user is logged in
+app.use('/managebooking', userRouter); // user routes when user is logged in
 app.use('/', adminRouter); // admin routes

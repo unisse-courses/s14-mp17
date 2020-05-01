@@ -1,10 +1,15 @@
 const router = require('express').Router();
-const { isPrivate } = require('../middlewares/checkAuth');
-const userController = require('../controllers/userController');
+const bookingController = require('../controllers/bookingController');
+const { isPrivate } = require('../middlewares/checkAuth.js');
 
-// display all users in the database
-//router.get('/', userController.getAllUsers);
+// GET user manage bookings route
+router.get('/usermanagebooking', isPrivate, (req, res) => {
+    res.render('usermanagebooking', {
+        title: 'Manage Your Bookings'
+    });
+});
 
-//router.post('/add', userController.createUser);
+// POST user manage bookings
+router.post('/usermanagebooking', isPrivate, bookingController.getAllBookings);
 
 module.exports = router;
