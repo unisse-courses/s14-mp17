@@ -15,11 +15,6 @@ const moment = require('moment');
 // imports for deployment
 const { envPort, sessionKey } = require('./config');
 
-// import the routes for the collections in the database
-const userRouter = require('./routes/userRoutes');
-const hotelRouter = require('./routes/hotelRoutes');
-const bookingRouter = require('./routes/bookingRoutes');
-
 // user authentication routes
 const authRouter = require('./routes/authRoutes');
 const indexRouter = require('./routes/indexRoutes');
@@ -45,10 +40,12 @@ app.engine('hbs', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials'),
   
-  dateFormat: function(context, block) {
+  helpers: {
+    dateFormat: function(context, block) {
       var f = block.hash.format || "MMMM DD YYYY, h:mm a";
       return moment(new Date(context), "YYYY-MM-DDTHH:mm:ss.SSSZ").format(f);
     }
+  }
 }));
 
 // set the view engine to the express-handlebar engine
@@ -56,7 +53,9 @@ app.set('view engine', 'hbs');
 
 // configuration for handling API endpoint data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ 
+  extended: true 
+}));
 
 // serve static files
 app.use(express.static('public'));
@@ -83,6 +82,6 @@ app.use((req, res, next) => {
 
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
-app.use('/', searchResultsRouter); // search results
-app.use('/', userPrivateRouter); // user routes when user is logged in
+app.use('/searchresults', searchResultsRouter); // search results
+app.use('/managebooking', userPrivateRouter); // user routes when user is logged in
 app.use('/', adminRouter); // admin routes

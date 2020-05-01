@@ -1,8 +1,7 @@
 const mongoose = require('./connection');
 
 const userSchema = new mongoose.Schema({
-    firstname: { type: String, required: true },
-    lastname: { type: String, required: true},
+    name: { type: String, required: true },
     email: { type: String, required: true },    
     password: { type: String, min: 8, required: true },
 });
@@ -16,7 +15,6 @@ exports.getAll = function(sort, next) {
         result.forEach(function(doc) {
             userObjects.push(doc.toObject());
         });
-
         next(userObjects);
     });
 };
@@ -24,7 +22,6 @@ exports.getAll = function(sort, next) {
 // create a user
 exports.create = function(obj, next) {
     const user = new userModel(obj);
-
     user.save(function(err, user) {
         next(err, user);
     });

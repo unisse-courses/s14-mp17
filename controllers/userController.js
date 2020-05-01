@@ -6,27 +6,21 @@ exports.registerUser = (req, res) => {
   const errors = validationResult(req);
 
   if (errors.isEmpty()) {
-    const {
-      name,
-      email,
-      password
-    } = req.body;
+    const { name, email, password } = req.body;
 
-    userModel.getOne({
-      email: email
-    }, (err, result) => {
-      if (result) {
+    userModel.getOne({ email: email }, (err, result) => {
+      if (result) 
+      {
         console.log(result);
-        // found a match, return to login with error
         req.flash('error_msg', 'User already exists. Please login.');
         res.redirect('/login');
-      } else {
+      } 
+      else 
+      {
         const saltRounds = 10;
-
-        // Hash password
         bcrypt.hash(password, saltRounds, (err, hashed) => {
           const newUser = {
-            name,
+            name: name,
             email: email,
             password: hashed
           };
@@ -35,7 +29,6 @@ exports.registerUser = (req, res) => {
             if (err) {
               req.flash('error_msg', 'Could not create user. Please try again.');
               res.redirect('/register');
-              // res.status(500).send({ message: "Could not create user"});
             } else {
               console.log(user);
               req.flash('success_msg', 'You are now registered! Login below.');
@@ -45,7 +38,8 @@ exports.registerUser = (req, res) => {
         });
       }
     });
-  } else {
+  } 
+  else {
     const messages = errors.array().map((item) => item.msg);
 
     req.flash('error_msg', messages.join(' '));
