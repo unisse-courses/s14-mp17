@@ -176,6 +176,12 @@ input
   margin-bottom: 2rem;
 }
 
+.red-text
+{
+  color: red;
+  background-color: rgb(255, 119, 119);
+}
+
 .search-results .col-sm-12
 {
   display: flex !important;
