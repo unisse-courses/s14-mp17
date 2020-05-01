@@ -77,10 +77,12 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.isAuthenticated = req.session.user ? true : false;
   next();
 });
 
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
 app.use('/', searchResultsRouter); // search results
+app.use('/', userPrivateRouter); // user routes when user is logged in
 app.use('/', adminRouter); // admin routes
