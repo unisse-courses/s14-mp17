@@ -3,9 +3,8 @@ html
   margin: 0;
 }
 
-h6
-{
-  color: red;
+#login, #register, #post-form {
+  margin-top: 1em;
 }
 
 /* Navigation Bar */
