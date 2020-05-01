@@ -14,9 +14,9 @@ exports.registerUser = (req, res) => {
   } 
   else
   {
-    const { name, email, password } = req.body;
+    //const { name, email, password } = req.body;
 
-    userModel.getOne({ email: email }, (err, result) => {
+    userModel.getOne({ email: req.body.email }, (err, result) => {
       if (result) 
       {
         console.log(result);
@@ -26,10 +26,10 @@ exports.registerUser = (req, res) => {
       else 
       {
         const saltRounds = 10;
-        bcrypt.hash(password, saltRounds, (err, hashed) => {
+        bcrypt.hash(req.body.password, saltRounds, (err, hashed) => {
           const newUser = {
-            name: name,
-            email: email,
+            name: req.body.name,
+            email: req.body.email,
             password: hashed
           };
 
