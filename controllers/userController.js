@@ -72,7 +72,7 @@ exports.loginUser = (req, res) => {
               req.session.user = user._id;
               req.session.name = user.name;
               console.log(req.session);
-              res.redirect('/');
+              res.redirect('/usermanagebooking');
             } 
             else
             {
