@@ -200,6 +200,11 @@ input
   padding: 1.5rem 1.5rem 1.5rem 1.5rem;
 }
 
+.card
+{
+  margin-left: 0.5rem !important;
+}
+
 .display-results
 {
   padding-left: 1.5rem;
