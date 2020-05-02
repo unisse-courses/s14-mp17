@@ -12,7 +12,4 @@ router.get('/about', isPublic, (req, res) => {
     res.render('about', {title: 'About'});
 });
 
-// POST home route
-router.get('/', isPublic, hotelController.getAllHotels);
-
 module.exports = router;

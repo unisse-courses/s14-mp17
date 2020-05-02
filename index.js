@@ -78,6 +78,6 @@ app.use((req, res, next) => {
 
 app.use('/', authRouter); // login/register routes
 app.use('/', indexRouter); // main/home route
-app.use('/searchresults', searchResultsRouter); // search results
+app.use('/', searchResultsRouter); // search results
 app.use('/managebooking', userRouter); // user routes when user is logged in
 app.use('/', adminRouter); // admin routes
