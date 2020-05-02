@@ -1,13 +1,12 @@
 const mongoose = require('./connection');
 
 const bookingSchema = new mongoose.Schema({
-    id: { type: Int32Array },
-    name: { type: String, required: true },
-    username: { type: String, required: true },
+    name: { type: mongoose.Schema.Types.ObjectId, ref: 'hotelModel', required: true },
+    username: { type: mongoose.Schema.Types.ObjectId, ref: 'userModel', required: true },
     checkIn: { type: Date, required: true },    
     checkOut: { type: Date, required: true },
     capacity: { type: Number, required: true },
-    status: { type: String, required: true },
+    status: { type: String, required: true, enum: ['Available', 'Taken'], default: 'Available' },
     price: { type: String, required: true }
 });
 
@@ -22,6 +21,7 @@ exports.getAll = function(sort, next) {
         result.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
+
         next(bookingObjects);
     });
 };
