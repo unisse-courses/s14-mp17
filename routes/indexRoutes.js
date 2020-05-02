@@ -4,15 +4,15 @@ const { isPublic } = require('../middlewares/checkAuth.js');
 
 // GET home route
 router.get('/', isPublic, (req, res) => {
-    const user = req.body.name;
-    hotelController.getAllHotels(user, (posts) => {
-        res.render('home', {title: 'Find your ideal hotel at an affordable price!'});
-    });
+    res.render('home', {title: 'Find your ideal hotel at an affordable price!'});
 });
 
 // GET about route
 router.get('/about', isPublic, (req, res) => {
     res.render('about', {title: 'About'});
 });
+
+// POST home route
+router.post('/', isPublic, hotelController.getAllHotels);
 
 module.exports = router;
