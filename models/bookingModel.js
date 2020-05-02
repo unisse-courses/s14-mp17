@@ -26,6 +26,15 @@ exports.getAll = function(sort, next) {
     });
 };
 
+// create a booking
+exports.createBooking = function(obj, next) {
+    const booking = new bookingModel(obj);
+
+    booking.save(function(err, booking) {
+        next(err, booking);
+    });
+};
+
 // search a booking
 exports.searchBooking = function(query, next) {
     bookingModel.find(query, function(err, bookings) {
