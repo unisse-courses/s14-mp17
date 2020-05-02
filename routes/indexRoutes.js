@@ -13,6 +13,6 @@ router.get('/about', isPublic, (req, res) => {
 });
 
 // POST home route
-router.post('/', isPublic, hotelController.getAllHotels);
+router.get('/', isPublic, hotelController.getAllHotels);
 
 module.exports = router;
