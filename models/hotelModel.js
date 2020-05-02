@@ -4,8 +4,8 @@ const hotelSchema = new mongoose.Schema({
     name: { type: String },
     address: { type: String },
     description: { type: String },    
-    contactNumber: { type: String },
-    maxCapacity: { type: Number },
+    number: { type: String },
+    capacity: { type: Number },
     price: { type: Number },
     amenities: { type: Array },
     img: { type: String }
