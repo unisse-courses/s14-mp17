@@ -9,7 +9,7 @@ router.get('/', isPublic, (req, res) => {
 
 // GET about route
 router.get('/about', isPublic, (req, res) => {
-    res.render('about');
+    res.render('about', {title: 'About'});
 });
 
 // POST home route
