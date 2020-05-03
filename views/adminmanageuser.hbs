@@ -19,46 +19,12 @@
         <h4>{{title}}</h4>
         <ul class="nav-list float-center">
             <li>
-                <button class="btn btn-primary" id="showAllUsers">Show All Users</button>
+                <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminSearchUsername" name="adminSearchUsername">
+                <button class="btn btn-primary" id="adminSearchUser">Search</button>
             </li>
             <li>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update User's Name</button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update User's Name</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="updateName">
-                            <div class="form-group">
-                                <label for="oldFirstname-label" id="oldFirstname-label" class="col-form-label">Old First Name</label>
-                                <input type="text" class="form-control" id="oldFirstname">
-                            </div>
-                            <div class="form-group">
-                                <label for="oldLastname" id="oldLastname" class="col-form-label">Old Last Name</label>
-                                <input type="text" class="form-control" id="oldLastName">
-                            </div>
-                            <div class="form-group">
-                                <label for="newFirstname" id="newFirstname" class="col-form-label">New First Name</label>
-                                <input type="text" class="form-control" id="newFirstname">
-                            </div>
-                            <div class="form-group">
-                                <label for="newLastname-label" id="newLastname-label" class="col-form-label">New Last Name</label>
-                                <input type="text" class="form-control" id="newLastname">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="updateName" data-dismiss="modal">Update Name</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
+                <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminDeleteUsername" name="adminDeleteUsername">
+                <button class="btn btn-primary" id="adminDeleteUser">Delete</button>
             </li>
         </ul>
 
