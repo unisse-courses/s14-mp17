@@ -19,15 +19,15 @@ router.get('/register', isPublic, (req, res) => {
 
 // GET admin to display login page for admin
 router.get('/admin', isPublic, (req, res) => {
-    res.render('admin', {
-        title: 'Admin Login',
-    });
+    if(req.body.username == 'admin' && req.body.password == '1234')
+    {
+        res.render('admin', { title: 'Admin Login', });
+    }
 });
 
 // POST methods for form submissions
 router.post('/register', isPublic, registerValidation, userController.registerUser);
 router.post('/login', isPublic, loginValidation, userController.loginUser);
-router.post('/admin', isPublic, adminValidation, userController.adminLogin);
 
 // logout
 //router.get('/logout', isPrivate, userController.logout);

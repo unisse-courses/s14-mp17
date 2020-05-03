@@ -108,19 +108,6 @@ exports.logoutUser = (req, res) => {
   }
 };
 
-// admin login
-exports.adminLogin = (req, res) => {
-    if(req.body.username == "admin" && req.body.password == "1234")
-    {
-        res.redirect('/adminmanagebooking');
-    }
-    else 
-    {
-        req.flash('error_msg', 'An error has occurred. Please try again.');
-        res.redirect('/admin');
-    }
-};
-
 exports.getAllUsers = (req, res) => {
     userModel.getAll({name: 1}, function(users) {
         res.render('adminmanageuser', {title: 'Manage Users', users: users});
