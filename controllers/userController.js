@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
 const { validationResult } = require('express-validator');
-const { isPrivate } = require('../middlewares/checkAuth.js');
 
 exports.registerUser = (req, res) => {
   const errors = validationResult(req);
@@ -74,9 +73,6 @@ exports.loginUser = (req, res) => {
               req.session.name = user.name;
               console.log(req.session);
               res.redirect('/usermanagebooking');
-              router.get('/', isPrivate, (req, res) => {
-                res.render('home', {title: 'Find your ideal hotel at an affordable price!'});
-            });
             } 
             else
             {
