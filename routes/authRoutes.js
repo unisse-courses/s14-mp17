@@ -24,6 +24,6 @@ router.post('/login', isPublic, loginValidation, userController.loginUser);
 router.post('/admin', isPublic, adminValidation, userController.adminLogin);
 
 // logout
-router.get('/logout', isPrivate, userController.logout);
+router.get('/logout', isPrivate, userController.logoutUser);
 
 module.exports = router;
