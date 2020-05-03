@@ -9,7 +9,7 @@ exports.getAllBookings = (req, res) => {
 };
 
 exports.getUserBookings = (user, callback) => {
-    bookingModel.getByUser(user, (err, bookings) => {
+    bookingModel.getUserBookings(user, (err, bookings) => {
         if(err) throw err;
         const bookingObjects = [];
         bookings.forEach(function(doc) {
