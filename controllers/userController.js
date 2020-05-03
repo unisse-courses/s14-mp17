@@ -103,9 +103,22 @@ exports.logoutUser = (req, res) => {
   {
     req.session.destroy(() => {
       res.clearCookie('connect.sid')
-      res.redirect('/login')
+      res.redirect('/')
     });
   }
+};
+
+// admin login
+exports.adminLogin = (req, res) => {
+    if(req.body.username == "admin" && req.body.password == "1234")
+    {
+        res.redirect('/adminmanagebooking');
+    }
+    else 
+    {
+        req.flash('error_msg', 'An error has occurred. Please try again.');
+        res.redirect('/admin');
+    }
 };
 
 exports.getAllUsers = (req, res) => {
