@@ -33,6 +33,16 @@
                     </tr>
                 </thead>
                 <tbody id="user-booking-table-body">
+                    {{#each bookings}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.checkin}}</td>
+                        <td>{{this.checkout}}</td>
+                        <td>{{this.capacity}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>
