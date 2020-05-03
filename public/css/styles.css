@@ -189,17 +189,6 @@ input
   text-align: center;
 }
 
-.search-results .col-sm-12
-{
-  display: flex !important;
-}
-
-.side-menu-search
-{
-  background-color: #ffcf44;
-  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-}
-
 .display-results
 {
   padding-left: 1.5rem;
