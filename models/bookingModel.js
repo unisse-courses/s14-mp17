@@ -26,6 +26,12 @@ exports.getAll = function(sort, next) {
     });
 };
 
+exports.getByUser = (user, next) => {
+    userModel.find({ name: user }, (err, bookings) => {
+        next(err, bookings);
+    });
+};
+
 // create a booking
 exports.createBooking = function(obj, next) {
     const booking = new bookingModel(obj);

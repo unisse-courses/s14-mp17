@@ -4,8 +4,13 @@ const { isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET user manage bookings route
 router.get('/usermanagebooking', isPrivate, (req, res) => {
-    res.render('usermanagebooking', {
-        title: 'Manage Your Bookings'
+    const user = req.session.name;
+
+    bookingController.getUserBookings(user, (posts) => {
+        res.render('usermanagebooking', {
+            title: 'Manage Your Bookings',
+            bookings
+        });
     });
 });
 
