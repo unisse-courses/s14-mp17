@@ -262,3 +262,8 @@ input
 {
   display: flex !important;
 }
+
+.heading h4
+{
+  padding-left: 1rem !important;
+}
