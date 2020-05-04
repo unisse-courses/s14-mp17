@@ -257,3 +257,8 @@ input
 {
   margin-top: 0 !important;
 }
+
+.heading
+{
+  display: flex !important;
+}
