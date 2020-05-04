@@ -26,8 +26,16 @@ exports.getAll = function(sort, next) {
     });
 };
 
+// get booking by username
 exports.getByUser = (username, next) => {
-    userModel.find({ username: username }, (err, bookings) => {
+    bookingModel.find({ username: username }, (err, bookings) => {
+        next(err, bookings);
+    });
+};
+
+// get booking by hotel name
+exports.getByHotel = (name, next) => {
+    bookingModel.find({ name: name }, (err, bookings) => {
         next(err, bookings);
     });
 };

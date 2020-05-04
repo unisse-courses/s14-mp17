@@ -18,3 +18,14 @@ exports.getUserBookings = (username, callback) => {
         callback(bookingObjects);
     });
 };
+
+exports.getBookingByName = (name, callback) => {
+    bookingModel.getByHotel(name, (err, bookings) => {
+        if(err) throw err;
+        const bookingObjects = [];
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+        callback(bookingObjects);
+    });
+};
