@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const hotelController = require('../controllers/hotelController');
-const { isPublic } = require('../middlewares/checkAuth.js');
+const { isPublic, isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET home route
-router.get('/', isPublic, (req, res) => {
+router.get('/', isPublic, isPrivate, (req, res) => {
     res.render('home', {title: 'Find your ideal hotel at an affordable price!'});
 });
 
