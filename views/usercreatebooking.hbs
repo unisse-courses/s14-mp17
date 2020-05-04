@@ -1,0 +1,94 @@
+<div class="row-container search">
+
+  <!-- SEARCH -->
+  <div class="col-sm-12">
+    <h4>{{title}}</h4>
+    
+    <ul class="nav-list float-center">
+        <li>
+            <button class="btn btn-primary" id="userSearchBooking">Back</button>
+        </li>
+    </ul>
+
+    <form action="/searchresults">
+      <table class="table table-borderless">
+        <tr>
+          <td><label>Select a Hotel</label></td>
+          <td><label>Check In</label></td>
+          <td><label>Check Out</label></td>
+          <td><label>Capacity</label></td>
+        </tr>
+        <tr>
+          <td>
+            <select class="form-control" id="hotelSearch" name="hotelSearch">
+              <option value="Bayfront Hotel" name="Bayfront Hotel">Bayfront Hotel</option>
+              <option value="Belmont Hotel" name="Belmont Hotel">Belmont Hotel</option>
+              <option value="Dusit Thani" name="Dusit Thani">Dusit Thani</option>
+              <option value="Heritage Hotel" name="Heritage Hotel">Heritage Hotel</option>
+            </select>
+          </td>
+          <td class="dates">
+            <input type="date" name="checkin" class="form-control" id="checkin">
+          </td>
+          <td class="dates">
+            <input type="date" name="checkout" class="form-control" id="checkout">
+          </td>
+          <td class="cap">
+            <select class="form-control" id="capacity">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+          </td>
+          <td>
+            <button class="btn btn-primary" id="showSearchBooking" type="submit">Search</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- VIEW AVAILABLE HOTELS -->
+<div class="row-container available-hotels">
+  <div class="col-sm-12">
+    <h4>Available Hotels</h4>
+    
+    <div class="card-group">
+      <div class="card">
+        <img class="card-img-top" src="img/bayfront-hotel.png">
+        <div class="card-body">
+          <h5 class="card-title">Bayfront Hotel</h5>
+          <p class="card-text">Kaohsiung St., Cebu City, Cebu</p>
+          <p class="card-text">Starts at Php 3,134!</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/belmont-hotel.png">
+        <div class="card-body">
+          <h5 class="card-title">Belmont Hotel</h5>
+          <p class="card-text">Newcoast Drive, Boracay Island, Aklan</p>
+          <p class="card-text">Starts at Php 3,886!</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/dusit-thani.png">
+        <div class="card-body">
+          <h5 class="card-title">Dusit Thani</h5>
+          <p class="card-text">Punta Egaño Rd., Lapu-lapu City, Cebu</p>
+          <p class="card-text">Starts at Php 7,264!</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="img/heritage-hotel.png">
+        <div class="card-body">
+          <h5 class="card-title">Heritage Hotel</h5>
+          <p class="card-text">Roxas Boulevard, Pasay, Metro Manila</p>
+          <p class="card-text">Starts at Php 3,248!</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

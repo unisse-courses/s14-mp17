@@ -11,6 +11,10 @@ router.get('/usermanagebooking', isPrivate, (req, res) => {
     //});
 });
 
+router.get('/usercreatebooking', isPrivate, (req, res) => {
+    res.render('usercreatebooking', {title: 'Search an Available Booking'});
+});
+
 // POST user manage bookings
 router.post('/usermanagebooking', isPrivate, bookingController.getAllBookings);
 
