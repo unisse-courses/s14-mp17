@@ -11,8 +11,6 @@ router.get('/adminmanageuser', isPrivate, (req, res) => {
     res.render('adminmanageuser', { title: 'Manage Users' });
 });
 
-router.get('/:id', isPrivate, bookingController.deleteBooking);
-
 router.get('/:id', isPrivate, userController.deleteUser);
 
 router.post('/search', isPrivate, userController.searchUser);
@@ -20,5 +18,7 @@ router.post('/search', isPrivate, userController.searchUser);
 router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
 
 router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
+
+router.post('/:id', isPrivate, bookingController.deleteBooking);
 
 module.exports = router;
