@@ -1,7 +1,7 @@
 const bookingModel = require('../models/bookingModel');
 
 exports.getAllBookings = (req, callback) => {
-    bookingModel.getAll({}, (bookings) => {
+    bookingModel.getAll({ name: 1 }, (bookings) => {
         if(err) throw err;
 
         const bookingObjects = [];
@@ -17,9 +17,8 @@ exports.getAllBookings = (req, callback) => {
 exports.getAllAvailable = (req, res) => {
     const hotelname = req.body.hotelname;
     const capacity = req.body.capacity;
-    const status = 'status:' + 'Available';
 
-    bookingModel.getAvailable({hotelname, capacity, status}, (err, bookings) => {
+    bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
         if (err) throw err;
         res.render('searchresults', {title: 'Search Results', bookings});
     })
