@@ -64,8 +64,8 @@ exports.searchBooking = function(query, next) {
 };
 
 // update a booking
-exports.updateBooking = function(filter, update, options) {
-    bookingModel.findOneAndUpdate(filter, update, options, function(err, result) {
+exports.updateBooking = function(booking_id, update_query) {
+    bookingModel.findOneAndUpdate(booking_id, update_query, function(err, result) {
         next(err, result);
     });
 };

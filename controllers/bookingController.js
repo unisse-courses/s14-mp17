@@ -42,10 +42,27 @@ exports.getUserBookings = (username, callback) => {
 exports.getBookingByName = (hotelname, callback) => {
     bookingModel.getByHotel(hotelname, (err, bookings) => {
         if(err) throw err;
+
         const bookingObjects = [];
+
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
+
         callback(bookingObjects);
+    });
+};
+
+exports.createNewBooking = (update_query, callback) => {
+    const booking_id = req.body.userSearchID;
+
+    bookingModel.updateBooking(booking_id, update_query, (err, bookings) => {
+        if(err) throw err;
+
+        const bookingObject;
+
+        bookingObject.toObject();
+
+        callback(bookingObject);
     });
 };
