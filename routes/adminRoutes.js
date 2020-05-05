@@ -8,7 +8,7 @@ router.get('/adminmanagebooking', isPrivate, (req, res) => {
     res.render('adminmanagebooking', { title: 'Manage Users Bookings' });
 });
 router.get('/adminmanageuser', isPrivate, (req, res) => {
-    userController.getAllBookings({}, function(users) {
+    userController.getAllUsers({}, function(users) {
         res.render('adminmanageuser', { title: 'Manage Users', users: users });
     });
 });

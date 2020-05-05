@@ -159,7 +159,6 @@ exports.adminLogin = (req, res) => {
 };
 
 exports.getAllUsers = (req, res) => {
-
     userModel.getAll({name: 1}, function(users) {
         res.send(users);
     })
