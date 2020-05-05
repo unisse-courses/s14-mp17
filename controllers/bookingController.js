@@ -28,31 +28,19 @@ exports.getAllAvailable = function(req, res) {
     });
 };
 
-exports.getUserBookings = (username, callback) => {
-    bookingModel.getByUser(username, (err, bookings) => {
-        if(err) throw err;
-
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-        
-        callback(bookingObjects);
+exports.getUserBookings = function(req, res) {
+    const username = req.session.name;
+    
+    bookingModel.getByUser(username, function(bookings) {
+        res.send(bookings);
     });
 };
 
-exports.getBookingByName = (hotelname, callback) => {
-    bookingModel.getByHotel(hotelname, (err, bookings) => {
-        if(err) throw err;
+exports.getBookingByName = function(req, res) {
+    const hotelname = req.body.hotelSearch;
 
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
-        callback(bookingObjects);
+    bookingModel.getByHotel(hotelname, function(bookings) {
+        res.send(bookings);
     });
 };
 
@@ -71,6 +59,12 @@ exports.createNewBooking = (update_query, callback) => {
         callback(bookingObjects);
     });
 };
+
+exports.searchBooking = function(req, res) {
+    bookingModel.search(req.body.userSearchID, function(result) {
+        res.send(result);
+    })
+}
 
 exports.deleteBooking = function(req, res) {
     bookingModel.delete(req.body.adminDeleteID, function(result) {
