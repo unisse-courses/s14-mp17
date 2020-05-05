@@ -41,9 +41,16 @@
                 {{#if bookings}}
                     <!-- loop through lists -->
                     {{#each bookings}}
-                <tbody id="admin-bookings-table-body">
-                </tbody>
-                {{/each}}
+                    <tbody id="admin-bookings-table-body">
+                        <td>{{ _id }}</td>
+                        <td>{{ hotelname }}</td>
+                        <td>{{ username }}</td>
+                        <td>{{ checkin }}</td>
+                        <td>{{ checkout }}</td>
+                        <td>{{ capacity }}</td>
+                        <td>{{ price }}</td>
+                    </tbody>
+                    {{/each}}
                 {{else}}
                 <td>No bookings yet</td>
                 {{/if}}

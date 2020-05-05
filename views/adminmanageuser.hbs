@@ -35,9 +35,11 @@
                 {{#if users}}
                     <!-- loop through lists -->
                     {{#each users}}
-                <tbody id="user-table-body">
-                </tbody>
-                {{/each}}
+                    <tbody id="user-table-body">
+                        <td>{{ name }}</td>
+                        <td>{{ email }}</td>
+                    </tbody>
+                    {{/each}}
                 {{else}}
                 <td>No users yet</td>
                 {{/if}}
