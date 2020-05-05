@@ -8,5 +8,22 @@
         <a href='/usermanagebooking' class="btn btn-primary">Back to Dashboard</a>
     </div>
 
+    {{#if bookings}}
+        <div class="row">
+        {{#each bookings}}
+            <div class="card">
+                <div class="card-header">{{status}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">{{description}}</p>
+                    <a href="/register" class="btn btn-primary">Book Now!</a>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        {{else}}
+    <h4>No bookings yet!</h4>
+    {{/if}}
+
   </div>
 </div>
