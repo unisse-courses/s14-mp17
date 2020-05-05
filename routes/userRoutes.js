@@ -17,7 +17,7 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 });
 
 router.get('/usercreatebooking', isPrivate, (req, res) => {
-    const name = req.session.name;
+    const name = req.session.value;
 
     res.render('usercreatebooking', {title: 'Search Results For', name});
 });
