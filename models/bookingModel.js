@@ -17,7 +17,15 @@ module.exports = bookingModel;
 // get all bookings from the collection
 exports.getAll = function(sort, next) {
     bookingModel.find({}).sort(sort).exec(function(err, result) {
-        next(bookingObjects);
+        next(result);
+    });
+};
+
+// get all available bookings
+exports.getAvailable = function(query, next) {
+
+    bookingModel.find({ query, status: 'Available'}).exec(function(err, result) {
+        next(err, result);
     });
 };
 
@@ -30,7 +38,7 @@ exports.getByUser = (username, next) => {
 
 // get booking by hotel name
 exports.getByHotel = (hotelname, next) => {
-    bookingModel.find({ hotelname: hotelname }).exec(function(err, bookings) {
+    bookingModel.find({ hotelname: hotelname }).sort({name: 1}).exec(function(err, bookings) {
         next(err, bookings);
     });
 };
@@ -50,7 +58,6 @@ exports.searchBooking = function(query, next) {
 // update a booking
 exports.updateBooking = function(filter, update, options) {
     bookingModel.findOneAndUpdate(filter, update, options, function(err, result) {
-        if(err) throw err;
         next(err, result);
     });
 };
@@ -58,7 +65,6 @@ exports.updateBooking = function(filter, update, options) {
 // delete a booking
 exports.deleteBooking = function(booking_id, next) {
     bookingModel.findByIdAndDelete(booking_id, function(err, result) {
-        if(err) throw err;
         next(err, result);
     });
 };
