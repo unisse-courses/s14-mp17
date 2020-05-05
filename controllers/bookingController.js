@@ -30,7 +30,7 @@ exports.getAllAvailable = function(req, res) {
 
 exports.getUserBookings = function(req, res) {
     const username = req.session.name;
-    
+
     bookingModel.getByUser(username, function(bookings) {
         res.send(bookings);
     });
@@ -67,7 +67,7 @@ exports.searchBooking = function(req, res) {
 }
 
 exports.deleteBooking = function(req, res) {
-    bookingModel.delete(req.body.adminDeleteID, function(result) {
+    bookingModel.deleteBooking(req.body.adminDeleteID, function(result) {
         if(err) throw err;
         res.send(result);
     });
