@@ -1,28 +1,25 @@
 <div class="row-container admin-manage-booking">
     <div class="col-sm-12">
 
+        <h4>{{title}}</h4>
         <div class="additional-nav-items">
-            <ul class="nav-list float-right">
+            <ul class="nav-list">
                 <li>
                     <a href="/adminmanagebooking" role="button" class="btn btn-primary">Manage Bookings</a>
                 </li>
                 <li>
                     <a href="/adminmanageuser" role="button" class="btn btn-primary">Manage Users</a>
                 </li>
+                <li>
+                    <input class="form-control" type="text" placeholder="Enter Booking ID" aria-label="Search" id="adminSearchID" name="adminSearchID">
+                    <button class="btn btn-primary" id="adminSearchBooking">Search</button>
+                </li>
+                <li>
+                    <input class="form-control" type="text" placeholder="Enter Booking ID" aria-label="Search" id="adminDeleteID" name="adminDeleteID">
+                    <button class="btn btn-primary" id="adminDeleteBooking">Delete</button>
+                </li>
             </ul>
         </div>
-
-        <h4>{{title}}</h4>
-        <ul class="nav-list float-center">
-            <li>
-                <input class="form-control" type="text" placeholder="Enter Booking ID" aria-label="Search" id="adminSearchID" name="adminSearchID">
-                <button class="btn btn-primary" id="adminSearchBooking">Search</button>
-            </li>
-            <li>
-                <input class="form-control" type="text" placeholder="Enter Booking ID" aria-label="Search" id="adminDeleteID" name="adminDeleteID">
-                <button class="btn btn-primary" id="adminDeleteBooking">Delete</button>
-            </li>
-        </ul>
 
         <div id="booking-list">
             <table class="table text-center">
@@ -38,8 +35,15 @@
                         <th>Price</th>
                     </tr>
                 </thead>
-                <tbody id="booking-table-body">
+                {{#if bookings}}
+                    <!-- loop through lists -->
+                    {{#each bookings}}
+                <tbody id="user-table-body">
                 </tbody>
+                {{/each}}
+                {{else}}
+                <td>No bookings yet</td>
+                {{/if}}
             </table>
         </div>
 

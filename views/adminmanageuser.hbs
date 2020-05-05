@@ -1,8 +1,9 @@
 <div class="row-container admin-manage-user">
     <div class="col-sm-12">
 
+        <h4>{{title}}</h4>
         <div class="additional-nav-items">
-            <ul class="nav-list float-right">
+            <ul class="nav-list">
                 <li>
                     <a href="/adminmanagebooking" role="button" class="btn btn-primary">Manage Bookings</a>
                 </li>
@@ -10,23 +11,15 @@
                     <a href="/adminmanageuser" role="button" class="btn btn-primary">Manage Users</a>
                 </li>
                 <li>
-                    <a href="/" role="button" class="btn btn-primary">Logout</a>
+                    <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminSearchUsername" name="adminSearchUsername">
+                    <button class="btn btn-primary" id="adminSearchUser">Search</button>
+                </li>
+                <li>
+                    <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminDeleteUsername" name="adminDeleteUsername">
+                    <button class="btn btn-primary" id="adminDeleteUser">Delete</button>
                 </li>
             </ul>
         </div>
-
-        <!--Page Contents-->
-        <h4>{{title}}</h4>
-        <ul class="nav-list float-center">
-            <li>
-                <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminSearchUsername" name="adminSearchUsername">
-                <button class="btn btn-primary" id="adminSearchUser">Search</button>
-            </li>
-            <li>
-                <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminDeleteUsername" name="adminDeleteUsername">
-                <button class="btn btn-primary" id="adminDeleteUser">Delete</button>
-            </li>
-        </ul>
 
         <div id="user-list">
             <table class="table text-center">
@@ -43,7 +36,7 @@
                 </tbody>
                 {{/each}}
                 {{else}}
-                <p>No users yet</p>
+                <td>No users yet</td>
                 {{/if}}
             </table>
         </div>
