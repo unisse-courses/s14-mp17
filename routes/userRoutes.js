@@ -12,15 +12,7 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
     res.render('usersearchbooking', {title: 'Search an Available Booking'});
 });
 
-// GET user create bookings route
-router.get('/usercreatebooking', isPrivate, (req, res) => {
-    const query = req.body.hotelname + ', ' + req.body.capacity;
-
-    //bookingController.getAllAvailable(query, (bookings) => {
-        res.render('usercreatebooking', { title: 'Search Results'/*, bookings*/ });
-    //});
-});
-
+// POST user create bookings route
 router.post('/usercreatebooking', isPrivate, bookingController.getAllAvailable);
 
 module.exports = router;

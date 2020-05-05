@@ -1,15 +1,13 @@
 const bookingModel = require('../models/bookingModel');
 
-exports.getAllAvailable = (query, callback) => {
-    bookingModel.getAvailable(query, (err, bookings) => {
+exports.getAllAvailable = (req, res) => {
+    const {
+        hotelname,
+        capacity
+    } = req.body;
+
+    bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
         if(err) throw err;
-
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
-        callback(bookingObjects);
+        res.render('usercreatebooking', { title: 'Search Results', bookings: bookings.toObject() });
     });
 };

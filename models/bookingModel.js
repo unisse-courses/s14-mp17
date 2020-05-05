@@ -15,7 +15,15 @@ const bookingModel = mongoose.model('bookings', bookingSchema);
 module.exports = bookingModel;
 
 exports.getAvailable = function(query, next) {
-    bookingModel.find({query, status: 'Available'}).exec((err, boooking) => {
+    bookingModel.find({query}).exec((err, booking) => {
+        if(err) throw err;
+
+        const bookingObjects = [];
+
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+
         next(err, booking);
     });
 };
