@@ -2,7 +2,7 @@ const mongoose = require('./connection');
 
 const bookingSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    username: { type: String, required: true },
+    username: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
     checkIn: { type: Date, required: true },    
     checkOut: { type: Date, required: true },
     capacity: { type: Number, required: true },
@@ -29,6 +29,7 @@ exports.getAll = function(sort, next) {
 // get booking by username
 exports.getByUser = (username, next) => {
     bookingModel.find({ username: username }, (err, bookings) => {
+        if(err) throw err;
         next(err, bookings);
     });
 };
