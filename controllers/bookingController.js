@@ -18,9 +18,11 @@ exports.getAllAvailable = (req, res) => {
     const hotelname = req.body.hotelname;
     const capacity = req.body.capacity;
 
+    console.log('marker1');
     bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
         if (err) throw err;
-        res.render('searchresults', {title: 'Testing', bookings});
+        console.log('marker2');
+        res.render('searchresults', { bookings });
     })
 }
 
