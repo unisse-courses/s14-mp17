@@ -18,7 +18,4 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 
 router.get('/usercreatebooking', isPrivate, bookingController.getAllBookings);
 
-// POST user manage bookings
-router.post('/usercreatebooking', isPrivate, bookingController.getAllBookings);
-
 module.exports = router;
