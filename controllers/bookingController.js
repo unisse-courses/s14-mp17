@@ -19,8 +19,8 @@ exports.getUserBookings = (username, callback) => {
     });
 };
 
-exports.getBookingByName = (name, callback) => {
-    bookingModel.getByHotel(name, (err, bookings) => {
+exports.getBookingByName = (hotelname, callback) => {
+    bookingModel.getByHotel(hotelname, (err, bookings) => {
         if(err) throw err;
         const bookingObjects = [];
         bookings.forEach(function(doc) {
