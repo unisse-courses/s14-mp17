@@ -16,10 +16,19 @@ $(document).ready(function() {
         parentDiv.append(userInfo);
     }
 
+    $.post('/adminmanageuser', function(data) {
+        var userListContainer = $('#user-table-body');
+        userListContainer.empty();
+
+        data.forEach((item, i), function() {
+            addUsersDiv(item, userListContainer);
+        });
+    })
+
     $('#adminSearchUser').click(function() {
         var name = $('#adminSearchUsername').val();
 
-        $.post('/adminmanageuser/search', {name: name}, function(data, status) {
+        $.post('/adminmanageuser/search', {name: name}, function(data) {
             var userListContainer = $('#user-table-body');
             userListContainer.empty();
 
