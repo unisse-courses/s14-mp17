@@ -4,14 +4,10 @@ const { isPublic } = require('../middlewares/checkAuth.js');
 
 // GET routes
 router.get('/searchresults', isPublic, (req, res) => {
-    const hotel = req.body.name;
-
-    bookingController.getBookingByName(hotel, (bookings) => {
-        res.render('searchresults', {title: 'Search Results', bookings});
-    });
+    res.render('searchresults', { title: 'Search Results' });
 });
 
 // POST routes
-//router.post('/searchresults', isPublic, bookingController.getAllBookings);
+router.post('/searchresults', isPublic, bookingController.getAllBookings);
 
 module.exports = router;
