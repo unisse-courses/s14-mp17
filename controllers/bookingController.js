@@ -59,10 +59,12 @@ exports.createNewBooking = (update_query, callback) => {
     bookingModel.updateBooking(booking_id, update_query, (err, bookings) => {
         if(err) throw err;
 
-        const bookingObject;
+        const bookingObjects = [];
 
-        bookingObject.toObject();
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
 
-        callback(bookingObject);
+        callback(bookingObjects);
     });
 };
