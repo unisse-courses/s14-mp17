@@ -68,3 +68,17 @@ exports.createNewBooking = (update_query, callback) => {
         callback(bookingObjects);
     });
 };
+
+exports.deleteBooking = (booking_id, callback) => {
+    bookingModel.deleteOne(booking_id, (err, bookings) => {
+        if(err) throw err;
+
+        const bookingObjects = [];
+
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+
+        callback(bookingObjects);
+    })
+}
