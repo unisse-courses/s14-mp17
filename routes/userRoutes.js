@@ -7,7 +7,7 @@ router.get('/usermanagebooking', isPrivate, (req, res) => {
     const username = req.session.username;
 
     //bookingController.getUserBookings(username, (bookings) => {
-        res.render('usermanagebooking', { title: 'Manage Your Bookings'/*, bookings*/ });
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings'/*, bookings*/ });
     //});
 });
 
