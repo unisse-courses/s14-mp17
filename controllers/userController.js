@@ -165,13 +165,11 @@ exports.getAllUsers = (req, res) => {
     })
 };
 
-exports.searchUser = (req, res) => {
-
+exports.searchUser = function(req, res) {
     const pattern = '^' + req.body.name;
     const query = {name: {$regex: pattern}};
 
     userModel.search(query, function(users) {
-      if(err) throw err;
       res.send(users);
     });
 };

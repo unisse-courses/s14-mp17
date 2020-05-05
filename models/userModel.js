@@ -37,6 +37,18 @@ exports.create = function(obj, next) {
     });
 };
 
+exports.search = function(query, next) {
+    userModel.find(query, function(err, result) {
+        if(err) throw err;
+
+        var userObjects = [];
+        result.forEach(function(doc) {
+            userObjects.push(doc.toObject());
+        });
+        next(userObjects);
+    });
+};
+
 exports.delete = function(name, next) {
     userModel.deleteOne(name, function(err, result) {
         next(err, result);

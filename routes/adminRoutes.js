@@ -14,6 +14,7 @@ router.get('/:id', isPrivate, bookingController.deleteBooking);
 router.get('/:id', isPrivate, userController.deleteUser);
 
 // POST routes
+router.post('/search', isPrivate, userController.searchUser);
 router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
 router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
 
