@@ -6,9 +6,9 @@ const { isPrivate } = require('../middlewares/checkAuth.js');
 router.get('/usermanagebooking', isPrivate, (req, res) => {
     const username = req.session.username;
 
-    bookingController.getUserBookings(username, (bookings) => {
-        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings });
-    });
+    //bookingController.getUserBookings(username, (bookings) => {
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings'/*, bookings*/ });
+    //});
 });
 
 router.get('/usersearchbooking', isPrivate, (req, res) => {
@@ -20,6 +20,6 @@ router.get('/usercreatebooking', isPrivate, (req, res) => {
 });
 
 // POST user manage bookings
-//router.post('/usermanagebooking', isPrivate, bookingController.getUserBookings);
+router.post('/usermanagebooking', isPrivate, bookingController.getBookingByName);
 
 module.exports = router;
