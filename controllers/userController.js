@@ -159,8 +159,9 @@ exports.adminLogin = (req, res) => {
 };
 
 exports.getAllUsers = (req, res) => {
+  
     userModel.getAll({name: 1}, function(users) {
-        res.render('adminmanageuser', {title: 'Manage Users', users: users});
+        res.send(users);
     })
 };
 
@@ -170,4 +171,13 @@ exports.searchUser = (req, res) => {
     userModel.search(query, function(users) {
         res.send(users);
     });
+};
+
+exports.deleteUser = (req, res) => {
+  const query = req.body.name;
+
+  userModel.delete(query, function(users) {
+    if(err) throw err;
+    res.send(users);
+  });
 };

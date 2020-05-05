@@ -20,6 +20,7 @@ exports.getAllAvailable = (req, res) => {
 
     bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
         if (err) throw err;
+
         res.render('searchresults', { bookings });
         res.render('usercreatebooking', { bookings });
     })
@@ -69,16 +70,12 @@ exports.createNewBooking = (update_query, callback) => {
     });
 };
 
-exports.deleteBooking = (booking_id, callback) => {
-    bookingModel.deleteOne(booking_id, (err, bookings) => {
+exports.deleteBooking = (req, res) => {
+
+    const booking_id = req.body.adminDeleteID;
+
+    bookingModel.delete(booking_id, function(bookings) {
         if(err) throw err;
-
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
-        callback(bookingObjects);
-    })
-}
+        res.send(bookings);
+    });
+};

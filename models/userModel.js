@@ -37,14 +37,8 @@ exports.create = function(obj, next) {
     });
 };
 
-exports.update = function(filter, update, options) {
-    userModel.findOneAndUpdate(filter, update, options, function(err, result) {
-        next(err, result);
-    });
-};
-
-exports.delete = function(filter, next) {
-    userModel.deleteOne(filter, function(err, result) {
+exports.delete = function(name, next) {
+    userModel.deleteOne(name, function(err, result) {
         next(err, result);
     });
 };
