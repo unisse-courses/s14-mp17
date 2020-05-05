@@ -28,18 +28,15 @@
                         <th>Price</th>
                     </tr>
                 </thead>
-                <tbody id="user-booking-table-body">
+                {{#if bookings}}
+                    <!-- loop through lists -->
                     {{#each bookings}}
-                    <tr>
-                        <td>{{this.id}}</td>
-                        <td>{{this.name}}</td>
-                        <td>{{this.checkin}}</td>
-                        <td>{{this.checkout}}</td>
-                        <td>{{this.capacity}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
-                    {{/each}}
+                <tbody id="user-bookings-table-body">
                 </tbody>
+                {{/each}}
+                {{else}}
+                <td>No bookings yet</td>
+                {{/if}}
             </table>
         </div>
         
