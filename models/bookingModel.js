@@ -1,7 +1,7 @@
 const mongoose = require('./connection');
 
 const bookingSchema = new mongoose.Schema({
-    hotelname: { type: String, required: true },
+    name: { type: String, required: true },
     username: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
     checkIn: { type: Date, required: true },    
     checkOut: { type: Date, required: true },
@@ -21,20 +21,21 @@ exports.getAll = function(sort, next) {
         result.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
+
         next(bookingObjects);
     });
 };
 
 // get booking by username
 exports.getByUser = (username, next) => {
-    bookingModel.find({ username: username }, (err, bookings) => {
+    bookingModel.find({ username: username }).exec(function(err, bookings) {
         next(err, bookings);
     });
 };
 
 // get booking by hotel name
 exports.getByHotel = (hotelname, next) => {
-    bookingModel.find({ hotelname: hotelname }, (err, bookings) => {
+    bookingModel.find({ hotelname: hotelname }).exec(function(err, bookings) {
         next(err, bookings);
     });
 };
