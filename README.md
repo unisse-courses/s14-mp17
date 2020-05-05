@@ -15,5 +15,6 @@
     - `dotenv`
     - `bcrypt`
     - `cookie-parser`
-3. Run `heroku open` in the `cmd` or Terminal.
-4. A browser will open [http://hotel-me-app.herokuapp.com]().
+3. Set up `heroku` package.
+4. Run `heroku open` in the `cmd` or Terminal.
+5. A browser will open [http://hotel-me-app.herokuapp.com]().
