@@ -17,10 +17,10 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 });
 
 router.get('/usercreatebooking', isPrivate, (req, res) => {
-    const name = req.session.hotelSearch;
+    const hotelSearch = req.session.hotelSearch;
 
     //bookingController.getUserBookings(name, (bookings) => {
-        res.render('usercreatebooking', {title: 'Search Results For', name});
+        res.render('usercreatebooking', {title: 'Search Results For', hotelSearch: hotelSearch});
     //})
     
 });
