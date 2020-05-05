@@ -17,9 +17,12 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 });
 
 router.get('/usercreatebooking', isPrivate, (req, res) => {
-    const hotelSearch = req.session.hotelSearch;
+    const name = req.session.name;
 
-    res.render('usercreatebooking', {title: 'Search Results For', hotelSearch});
+    bookingController.getUserBookings(name, (bookings) => {
+        res.render('usercreatebooking', {title: 'Search Results For', name});
+    })
+    
 });
 
 // POST user manage bookings
