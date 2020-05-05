@@ -2,7 +2,7 @@ const mongoose = require('./connection');
 
 const bookingSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    username: { type: String, required: true },
+    username: { type: mongoose.Schema.Types.ObjectId, ref: 'users', required: true },
     checkIn: { type: Date, required: true },    
     checkOut: { type: Date, required: true },
     capacity: { type: Number, required: true },
