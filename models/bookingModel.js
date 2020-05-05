@@ -30,7 +30,11 @@ exports.getAll = function(sort, next) {
 exports.getByUser = (username, next) => {
     bookingModel.find({ username: username }, (err, bookings) => {
         if(err) throw err;
-        next(err, bookings);
+        const bookingObjects = [];
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+        callback(bookingObjects);
     });
 };
 
