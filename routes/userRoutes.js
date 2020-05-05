@@ -17,7 +17,7 @@ router.get('/usercreatebooking', isPrivate, (req, res) => {
     const query = req.body.hotelname + ', ' + req.body.capacity;
 
     //bookingController.getAllAvailable(query, (bookings) => {
-        res.render('usercreatebooking', { title: 'Search Results', bookings });
+        res.render('usercreatebooking', { title: 'Search Results'/*, bookings*/ });
     //});
 });
 
