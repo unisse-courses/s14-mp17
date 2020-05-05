@@ -80,9 +80,9 @@ $(document).ready(function() {
     });
 
     $('#adminSearchBooking').click(function() {
-        var name = $('#adminSearchID').val();
+        var id = $('#adminSearchID').val();
 
-        $.post('/adminmanagebooking/search', {name: name}, function(data) {
+        $.post('/adminmanagebooking/search', {_id: id}, function(data) {
             var bookingListContainer = $('#admin-booking-table-body');
             bookingListContainer.empty();
 

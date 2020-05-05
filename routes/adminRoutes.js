@@ -5,7 +5,7 @@ const { isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET routes
 router.get('/adminmanagebooking', isPrivate, (req, res) => {
-    res.render('adminmanagebooking', { title: 'Manage Users Bookings' });
+    res.render('adminmanagebooking', { title: 'Manage Users Bookings', testread: req.session.name });
 });
 router.get('/adminmanageuser', isPrivate, (req, res) => {
     res.render('adminmanageuser', { title: 'Manage Users' });
