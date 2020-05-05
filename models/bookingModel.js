@@ -40,15 +40,6 @@ exports.getByHotel = (name, next) => {
     });
 };
 
-// create a booking
-exports.createBooking = function(obj, next) {
-    const booking = new bookingModel(obj);
-
-    booking.save(function(err, booking) {
-        next(err, booking);
-    });
-};
-
 // search a booking
 exports.searchBooking = function(query, next) {
     bookingModel.find(query, function(err, bookings) {
@@ -64,13 +55,15 @@ exports.searchBooking = function(query, next) {
 // update a booking
 exports.updateBooking = function(filter, update, options) {
     bookingModel.findOneAndUpdate(filter, update, options, function(err, result) {
+        if(err) throw err;
         next(err, result);
     });
 };
 
 // delete a booking
-exports.deleteBooking = function(filter, next) {
-    bookingModel.deleteOne(filter, function(err, result) {
+exports.deleteBooking = function(booking_id, next) {
+    bookingModel.findByIdAndDelete(booking_id, function(err, result) {
+        if(err) throw err;
         next(err, result);
     });
 };

@@ -110,15 +110,52 @@ exports.logoutUser = (req, res) => {
 
 // admin login
 exports.adminLogin = (req, res) => {
-    if(req.body.username == "admin" && req.body.password == "1234")
-    {
-        res.redirect('/adminmanagebooking');
-    }
-    else 
-    {
-        req.flash('error_msg', 'An error has occurred. Please try again.');
-        res.redirect('/admin');
-    }
+  const errors = validationResult(req);
+
+  if(errors.isEmpty()) 
+  {
+    const { username, password } = req.body;
+
+    userModel.getOne({ name: username }, (err, user) => {
+      if(err)
+      {
+        req.flash('error_msg', 'Something happened! Please try again.');
+        res.redirect('/login');
+      } 
+      else 
+      {
+        if(user)
+        {
+          bcrypt.compare(password, user.password, (err, result) => {
+            if (result)
+            {
+              req.session.user = user._id;
+              req.session.name = user.name;
+              console.log(req.session);
+              res.redirect('/adminmanagebooking');
+            } 
+            else
+            {
+              req.flash('error_msg', 'Incorrect password. Please try again.');
+              res.redirect('/login');
+            }
+          });
+        }
+        else
+        {
+          // No user found
+          req.flash('error_msg', 'No registered user with that email. Please register.');
+          res.redirect('/register');
+        }
+      }
+    });
+  }
+  else
+  {
+    const messages = errors.array().map((item) => item.msg);
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/login');
+  }
 };
 
 exports.getAllUsers = (req, res) => {
