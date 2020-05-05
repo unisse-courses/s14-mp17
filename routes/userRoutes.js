@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bookingController = require('../controllers/bookingController');
+const userController = require('../controllers/userController');
 const { isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET user manage bookings route
@@ -16,7 +17,9 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 });
 
 router.get('/usercreatebooking', isPrivate, (req, res) => {
-    res.render('usercreatebooking', {title: 'Search Results'});
+    const name = req.session.name;
+
+    res.render('usercreatebooking', {title: 'Search Results', name});
 });
 
 // POST user manage bookings

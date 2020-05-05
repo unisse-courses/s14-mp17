@@ -5,7 +5,7 @@
 ### Set up
 1. Clone the repository using the terminal or command line `git clone https://github.com/unisse-courses/s14-mp17.git`.
 2. Navigate to the folder `s14-mp17`.
-2. In `cmd` or Terminal, run `npm install`. (This step will install the dependencies specified in the package.json). Additional packages that is needed for this project include (if they are not included in the installation):
+3. In `cmd` or Terminal, run `npm install`. (This step will install the dependencies specified in the package.json). Additional packages that is needed for this project include (if they are not included in the installation):
     - `connect-flash`
     - `connect-mongo`
     -  `moment`
@@ -15,6 +15,6 @@
     - `dotenv`
     - `bcrypt`
     - `cookie-parser`
-3. Set up `heroku` package.
-4. Run `heroku open` in the `cmd` or Terminal.
-5. A browser will open [http://hotel-me-app.herokuapp.com]().
+4. Set up `heroku` package.
+5. Run `heroku open` in the `cmd` or Terminal.
+6. A browser will open [http://hotel-me-app.herokuapp.com]().
