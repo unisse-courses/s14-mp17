@@ -27,6 +27,6 @@ router.get('/usercreatebooking', isPrivate, (req, res) => {
 });
 
 // POST user manage bookings
-router.post('/usermanagebooking', isPrivate, bookingController.getAllBookings);
+router.post('/usercreatebooking', isPrivate, bookingController.getAllBookings);
 
 module.exports = router;

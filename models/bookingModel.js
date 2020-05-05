@@ -21,7 +21,6 @@ exports.getAll = function(sort, next) {
         result.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
-
         next(bookingObjects);
     });
 };
