@@ -28,10 +28,9 @@ exports.getAll = function(sort, next) {
 
 // get booking by username
 exports.getByUser = (username, next) => {
-    bookingModel.find({ username: username }).exec(function(err, bookings) {
+    bookingModel.find({ username: username }, (err, bookings) => {
         next(err, bookings);
-    });
-};
+    })
 
 // get booking by hotel name
 exports.getByHotel = (hotelname, next) => {
