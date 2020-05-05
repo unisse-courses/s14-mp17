@@ -17,11 +17,6 @@ module.exports = bookingModel;
 // get all bookings from the collection
 exports.getAll = function(sort, next) {
     bookingModel.find({}).sort(sort).exec(function(err, result) {
-        var bookingObjects = [];
-        result.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
         next(bookingObjects);
     });
 };
@@ -30,7 +25,8 @@ exports.getAll = function(sort, next) {
 exports.getByUser = (username, next) => {
     bookingModel.find({ username: username }, (err, bookings) => {
         next(err, bookings);
-    })
+    });
+};
 
 // get booking by hotel name
 exports.getByHotel = (hotelname, next) => {
