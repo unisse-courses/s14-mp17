@@ -11,6 +11,9 @@
                     <a href="/adminmanageuser" role="button" class="btn btn-primary">Manage Users</a>
                 </li>
                 <li>
+                    <button class="btn btn-primary" id="adminShowAllUsers">Show All Users</button>
+                </li>
+                <li>
                     <input class="form-control" type="text" placeholder="Enter User Name" aria-label="Search" id="adminSearchUsername" name="adminSearchUsername">
                     <button class="btn btn-primary" id="adminSearchUser">Search</button>
                 </li>
@@ -29,10 +32,17 @@
                         <th>Email Address</th>
                     </tr>
                 </thead>
-                
+                {{#if users}}
+                    <!-- loop through lists -->
+                    {{#each users}}
                     <tbody id="user-table-body">
-                        
+                        <td>{{ name }}</td>
+                        <td>{{ email }}</td>
                     </tbody>
+                    {{/each}}
+                {{else}}
+                <td>No users yet</td>
+                {{/if}}
             </table>
         </div>
 
