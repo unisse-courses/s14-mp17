@@ -67,7 +67,7 @@ exports.searchBooking = function(req, res) {
 }
 
 exports.deleteBooking = function(req, res) {
-    bookingModel.deleteBooking(req.body.adminDeleteID, function(result) {
+    bookingModel.deleteBooking(req.body.adminDeleteID, (err, result) => {
         if(err) throw err;
         res.send(result);
     });
