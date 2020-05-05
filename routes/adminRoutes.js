@@ -10,8 +10,8 @@ router.get('/adminmanagebooking', isPrivate, (req, res) => {
 router.get('/adminmanageuser', isPrivate, (req, res) => {
     res.render('adminmanageuser', { title: 'Manage Users' });
 });
-router.get('/adminmanagebooking/delete', isPrivate, bookingController.deleteBooking);
-router.get('/adminmanageuser/delete', isPrivate, userController.deleteUser);
+router.get('/:id', isPrivate, bookingController.deleteBooking);
+router.get('/:id', isPrivate, userController.deleteUser);
 
 // POST routes
 router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
