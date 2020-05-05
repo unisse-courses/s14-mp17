@@ -20,7 +20,7 @@ exports.getAllAvailable = (req, res) => {
 
     bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
         if (err) throw err;
-        res.render('searchresults', {title: 'Search Results', bookings});
+        res.render('searchresults', {title: 'Testing', bookings});
     })
 }
 
