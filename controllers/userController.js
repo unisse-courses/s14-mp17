@@ -159,17 +159,20 @@ exports.adminLogin = (req, res) => {
 };
 
 exports.getAllUsers = (req, res) => {
-  
+
     userModel.getAll({name: 1}, function(users) {
         res.send(users);
     })
 };
 
 exports.searchUser = (req, res) => {
-    var pattern = '^' + req.body.name;
-    var query = {name: {$regex: pattern}};
+
+    const pattern = '^' + req.body.name;
+    const query = {name: {$regex: pattern}};
+
     userModel.search(query, function(users) {
-        res.send(users);
+      if(err) throw err;
+      res.send(users);
     });
 };
 

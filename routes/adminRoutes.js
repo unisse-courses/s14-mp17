@@ -13,8 +13,15 @@ router.get('/adminmanageuser', isPrivate, (req, res) => {
     res.render('adminmanageuser', { title: 'Manage Users' });
 });
 
+// GET delete booking route
+router.get('/adminmanagebooking/delete/', isPrivate, bookingController.deleteBooking);
+
+// GET delete user route
+router.get('/adminmanageuser/delete', isPrivate, userController.deleteUser);
+
 // POST routes
 router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
+
 router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
 
 module.exports = router;
