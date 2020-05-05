@@ -14,17 +14,19 @@ exports.getAllBookings = (req, callback) => {
     });
 };
 
-exports.getAllAvailable = (req, res) => {
-    const hotelname = req.body.hotelname;
-    const capacity = req.body.capacity;
+exports.getAllAvailable = function(req, res) {
+    bookingModel.getAvailable({ hotelname: req.body.hotelname, capacity: req.body.capacity, status: 'Available' }, function(err, bookings) {
+        if(err) throw err;
 
-    bookingModel.getAvailable({hotelname, capacity, status: 'Available'}, (err, bookings) => {
-        if (err) throw err;
+        const bookingObjects = [];
 
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+        
         res.render('searchresults', { bookings });
-        res.render('usercreatebooking', { bookings });
-    })
-}
+    });
+};
 
 exports.getUserBookings = (username, callback) => {
     bookingModel.getByUser(username, (err, bookings) => {
