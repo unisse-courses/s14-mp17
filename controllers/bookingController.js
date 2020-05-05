@@ -75,7 +75,6 @@ exports.deleteBooking = (req, res) => {
     const booking_id = req.body.adminDeleteID;
 
     bookingModel.delete(booking_id, function(bookings) {
-        if(err) throw err;
-        res.send(bookings);
+        if(err);
     });
 };
