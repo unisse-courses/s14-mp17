@@ -17,7 +17,7 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
 });
 
 router.get('/usercreatebooking', isPrivate, (req, res) => {
-    const name = req.body.name;
+    const name = req.body.hotelSearch;
 
     res.render('usercreatebooking', {title: 'Search Results For', name});
 });
