@@ -85,7 +85,7 @@ exports.updateBooking = function(booking_id, update_query) {
 
 // delete a booking
 exports.deleteBooking = function(booking_id, next) {
-    bookingModel.findByIdAndDelete({_id: booking_id}, function(err, result) {
+    bookingModel.findOneAndDelete({_id: booking_id}, function(err, result) {
         next(err, result);
     });
 };
