@@ -25,6 +25,14 @@ exports.getAll = function(sort, next) {
 exports.getAvailable = function(query, next) {
 
     bookingModel.find({ query, status: 'Available'}).exec(function(err, result) {
+        if(err) throw err;
+
+        const bookingObjects = [];
+
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+        
         next(err, result);
     });
 };
