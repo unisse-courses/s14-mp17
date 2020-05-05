@@ -5,17 +5,28 @@ const { isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET user manage bookings route
 router.get('/usermanagebooking', isPrivate, (req, res) => {
-    const username = req.session.username;
+    const name = req.session.name;
 
-    //bookingController.getUserBookings(username, (bookings) => {
-        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings'/*, bookings*/ });
-    //});
+    bookingController.getUserBookings(name, (bookings) => {
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
+    });
 });
 
+// GET user search bookings route
 router.get('/usersearchbooking', isPrivate, (req, res) => {
     res.render('usersearchbooking', {title: 'Search an Available Booking'});
 });
 
-router.get('/usercreatebooking', isPrivate, bookingController.getAllBookings);
+// GET user create bookings route
+router.get('/usercreatebooking', isPrivate, (req, res) => {
+    const hotelSearch = req.session.hotelSearch;
+
+    bookingController.getBookingByName(hotelSearch, (bookings) => {
+        res.render('usercreatebooking', { title: 'Search Results', bookings: bookings});
+    });
+});
+
+// POST user create bookings route
+router.post('/usercreatebooking', isPrivate, bookingController.getAllBookings);
 
 module.exports = router;

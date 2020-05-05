@@ -6,8 +6,8 @@ exports.getAllBookings = (req, res) => {
     });
 };
 
-exports.getUserBookings = (username, callback) => {
-    bookingModel.getByUser(username, (err, bookings) => {
+exports.getUserBookings = (name, callback) => {
+    bookingModel.getByUser(name, (err, bookings) => {
         if(err) throw err;
         const bookingObjects = [];
         bookings.forEach(function(doc) {
