@@ -15,7 +15,7 @@ const bookingModel = mongoose.model('bookings', bookingSchema);
 module.exports = bookingModel;
 
 exports.getAvailable = function(query, next) {
-    bookingModel.find({query}).exec((err, booking) => {
+    bookingModel.find(query).exec((err, booking) => {
         if(err) throw err;
 
         const bookingObjects = [];
