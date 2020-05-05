@@ -1,8 +1,21 @@
-<div class="card">
-    <div class="card-header">{{status}}</div>
-    <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
-        <p class="card-text">{{description}}</p>
-        <a href="/register" class="btn btn-primary">Book Now!</a>
+<div class="row-container">
+  <div class="col s12">
+    {{#if bookings}}
+    <h4>{{title}}</h4>
+    <div class="row">
+      {{#each bookings}}
+        <div class="card">
+            <div class="card-header">{{status}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{description}}</p>
+                <a href="/register" class="btn btn-primary">Book Now!</a>
+            </div>
+        </div>
+      {{/each}}
     </div>
+    {{else}}
+    <h5>No bookings yet!</h5>
+    {{/if}}
+  </div>
 </div>
