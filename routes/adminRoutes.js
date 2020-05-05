@@ -19,6 +19,4 @@ router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
 
 router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
 
-router.post('/:id', isPrivate, bookingController.deleteBooking);
-
 module.exports = router;
