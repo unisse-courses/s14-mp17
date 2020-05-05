@@ -65,7 +65,7 @@ exports.searchBooking = function(query, next) {
 
 // update a booking
 exports.updateBooking = function(booking_id, update_query) {
-    bookingModel.findOneAndUpdate(booking_id, update_query, function(err, result) {
+    bookingModel.findOneAndUpdate({_id: booking_id}, update_query, function(err, result) {
         next(err, result);
     });
 };
