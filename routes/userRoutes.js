@@ -16,8 +16,6 @@ router.get('/usercreatebooking', isPrivate, (req, res) => {
 
 router.get('/search', isPrivate, bookingController.searchBooking);
 
-router.get('/:id', isPrivate, bookingController.deleteBooking);
-
 router.post('/usercreatebooking', isPrivate, bookingController.getAllAvailable);
 
 router.post('/usermanagebooking', isPrivate, bookingController.getUserBookings);
