@@ -8,8 +8,13 @@ exports.getAllBookings = (req, res) => {
 };
 
 exports.getAllAvailable = function(req, res) {
+    const hotelname = req.body.hotelname;
+    const capacity = req.body.capacity;
+    const status = 'status: Available';
 
-    bookingModel.getAvailable({ hotelname: req.body.hotelname, capacity: req.body.capacity, status: 'Available' }, function(err, bookings) {
+    const query = hotelname + ", " + capacity + ", " + status;
+
+    bookingModel.getAvailable(query, function(err, bookings) {
         if(err) throw err;
 
         const bookingObjects = [];

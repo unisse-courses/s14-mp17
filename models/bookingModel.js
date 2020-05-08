@@ -29,7 +29,7 @@ exports.getAll = function(sort, next) {
 // get all available bookings
 exports.getAvailable = function(query, next) {
 
-    bookingModel.find({ query}).exec(function(err, bookings) {
+    bookingModel.find({ query }).exec(function(err, bookings) {
         if(err) throw err;
 
         const bookingObjects = [];
