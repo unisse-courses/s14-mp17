@@ -3,9 +3,7 @@ const hotelController = require('../controllers/hotelController');
 const { isPublic, isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET home route
-router.get('/', isPublic, (req, res) => {
-    res.render('home', {title: 'Find your ideal hotel at an affordable price!'});
-});
+router.get('/', isPublic, hotelController.getAllHotels);
 
 // GET about route
 router.get('/about', isPublic, (req, res) => {
