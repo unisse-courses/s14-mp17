@@ -1,5 +1,6 @@
 const bookingModel = require('../models/bookingModel');
 
+// get all bookings
 exports.getAllBookings = function(req, res) {
     const username = req.session.name;
     bookingModel.getAll(username, function(err, bookings) {
@@ -7,22 +8,11 @@ exports.getAllBookings = function(req, res) {
     });
 };
 
+// get only available bookings given a hotel
 exports.getAllAvailable = function(req, res) {
     const hotelname = req.body.hotelname;
-    const capacity = req.body.capacity;
-    const status = 'status: Available';
 
-    const query = hotelname + ", " + capacity + ", " + status;
-
-    bookingModel.getAvailable({ query }, function(err, bookings) {
-        if(err) throw err;
-
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-        
+    bookingModel.getAvailable(hotelname, function(err, bookings) {
         res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });
 };

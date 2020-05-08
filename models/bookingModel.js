@@ -13,34 +13,25 @@ const bookingSchema = new mongoose.Schema({
 
 const bookingModel = mongoose.model('bookings', bookingSchema);
 
-// get all bookings from the collection
 exports.getAll = function(query, next) {
-
     bookingModel.find({ }).exec(function(err, bookings) {
         if (err) throw err;
-
         const bookingObjects = [];
-
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
-
         next(err, bookingObjects);
     });
 };
 
-// get all available bookings
 exports.getAvailable = function(query, next) {
 
-    bookingModel.find({ query }).exec(function(err, bookings) {
+    bookingModel.find({ hotelname: query, status: 'Available' }).exec(function(err, bookings) {
         if(err) throw err;
-
         const bookingObjects = [];
-
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
-
         next(err, bookingObjects);
     });
 };
