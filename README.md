@@ -26,4 +26,4 @@
 2. Users
     - John Smith
         - email: johnsmith@email.com
-        - password: 12345678
+        - password: password
