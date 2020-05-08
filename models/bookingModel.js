@@ -14,15 +14,15 @@ const bookingSchema = new mongoose.Schema({
 const bookingModel = mongoose.model('bookings', bookingSchema);
 
 // get all bookings from the collection
-exports.getAll = function(sort, next) {
-    bookingModel.find({}).sort(sort).exec(function(bookings) {
+exports.getAll = function(next) {
+    bookingModel.find({}).exec(function(bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
 
-        callback(bookingObjects);
+        next(bookingObjects);
     });
 };
 

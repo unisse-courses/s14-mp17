@@ -2,7 +2,7 @@ const bookingModel = require('../models/bookingModel');
 
 exports.getAllBookings = (req, res) => {
 
-    bookingModel.getAll({ name: 1 }, function(bookings) {
+    bookingModel.getAll( function(bookings) {
         res.render('adminmanagebooking', { title: 'Manage Users Bookings', bookings: bookings });
     });
 };
