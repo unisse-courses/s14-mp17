@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
 const userModel = mongoose.model('users', userSchema);
 
 exports.getAll = function(query, next) {
-    userModel.find({}).exec( function(err, users) {
+    userModel.find({}).sort({ name: 1 }).exec( function(err, users) {
 
         const userObjects = [];
 

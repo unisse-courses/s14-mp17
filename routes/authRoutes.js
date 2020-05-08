@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const adminController = require('../controllers/adminController');
 const { registerValidation, loginValidation, adminValidation } = require('../validators.js');
 const { isPublic, isPrivate } = require('../middlewares/checkAuth.js');
 
@@ -22,7 +21,7 @@ router.get('/admin', isPublic, (req, res) => {
 // POST methods for form submissions
 router.post('/register', isPublic, registerValidation, userController.registerUser);
 router.post('/login', isPublic, loginValidation, userController.loginUser);
-router.post('/admin', isPublic, adminValidation, adminController.adminLogin);
+router.post('/admin', isPublic, adminValidation, userController.adminLogin);
 
 // logout
 router.get('/logout', isPrivate, userController.logoutUser);
