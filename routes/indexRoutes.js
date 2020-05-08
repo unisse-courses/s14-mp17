@@ -4,7 +4,7 @@ const { isPublic, isPrivate } = require('../middlewares/checkAuth.js');
 
 // GET home route
 router.get('/', isPublic, (req, res) => {
-    res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings'});
+    res.render('home', { title: 'Find the perfect hotel at an affordable price!'});
 });
 
 // GET about route
