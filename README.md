@@ -18,3 +18,12 @@
 4. Set up `heroku` package.
 5. Run `heroku open` in the `cmd` or Terminal.
 6. A browser will open [http://hotel-me-app.herokuapp.com]().
+
+### Credentials
+1. Admin
+    - username: admin
+    - password: 12345678
+2. Users
+    - John Smith
+        - email: johnsmith@email.com
+        - password: 12345678
