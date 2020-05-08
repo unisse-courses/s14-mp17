@@ -15,8 +15,14 @@ const bookingModel = mongoose.model('bookings', bookingSchema);
 
 // get all bookings from the collection
 exports.getAll = function(sort, next) {
-    bookingModel.find({}).sort(sort).exec(function(err, result) {
-        next(err, result);
+    bookingModel.find({}).sort(sort).exec(function(bookings) {
+        const bookingObjects = [];
+
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+
+        callback(bookingObjects);
     });
 };
 

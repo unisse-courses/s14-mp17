@@ -1,16 +1,9 @@
 const bookingModel = require('../models/bookingModel');
 
-exports.getAllBookings = (req, callback) => {
-    bookingModel.getAll({ name: 1 }, (bookings) => {
-        if(err) throw err;
+exports.getAllBookings = (req, res) => {
 
-        const bookingObjects = [];
-
-        bookings.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
-        callback(bookingObjects);
+    bookingModel.getAll({ name: 1 }, function(bookings) {
+        res.render('adminmanagebooking', { title: 'Manage Users Bookings', bookings: bookings });
     });
 };
 

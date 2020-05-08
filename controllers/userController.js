@@ -160,8 +160,8 @@ exports.adminLogin = (req, res) => {
 
 exports.getAllUsers = (req, res) => {
     userModel.getAll({name: 1}, function(users) {
-        res.send(users);
-    })
+      res.render('adminmanageuser', { title: 'Manage Users', users: users});
+    });
 };
 
 exports.searchUser = function(req, res) {

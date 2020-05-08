@@ -9,11 +9,14 @@ const userSchema = new mongoose.Schema({
 const userModel = mongoose.model('users', userSchema);
 
 exports.getAll = function(sort, next) {
-    userModel.find({}).sort(sort).exec(function(err, result) {
-        var userObjects = [];
-        result.forEach(function(doc) {
+    userModel.find({}).sort(sort).exec(function(users) {
+
+        const userObjects = [];
+
+        users.forEach(function(doc) {
             userObjects.push(doc.toObject());
         });
+
         next(userObjects);
     });
 };
