@@ -37,7 +37,7 @@ app.engine('hbs', exphbs({
   partialsDir: path.join(__dirname, '/views/partials'),
   
   helpers: {
-    dateFormat: function(context, block) {
+    dateformat: function(context, block) {
       var f = block.hash.format || "MMMM DD YYYY, h:mm a";
       return moment(new Date(context), "YYYY-MM-DDTHH:mm:ss.SSSZ").format(f);
     }

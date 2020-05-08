@@ -49,40 +49,23 @@
   <div class="col-sm-12">
     <h4>Available Hotels</h4>
     
-    <div class="card-group">
-      <div class="card">
-        <img class="card-img-top" src="img/bayfront-hotel.png">
-        <div class="card-body">
-          <h5 class="card-title">Bayfront Hotel</h5>
-          <p class="card-text">Kaohsiung St., Cebu City, Cebu</p>
-          <p class="card-text">Starts at Php 3,134!</p>
+     <div class="card-group">
+    {{#if hotels}}
+        <!-- loop through lists -->
+        {{#each hotels}}
+        <div class="card">
+          <img class="card-img-top" src="{{ img }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ name }}</h5>
+            <p class="card-text">{{ address }}</p>
+            <p class="card-text">Starts at Php {{ price }}!</p>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="img/belmont-hotel.png">
-        <div class="card-body">
-          <h5 class="card-title">Belmont Hotel</h5>
-          <p class="card-text">Newcoast Drive, Boracay Island, Aklan</p>
-          <p class="card-text">Starts at Php 3,886!</p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="img/dusit-thani.png">
-        <div class="card-body">
-          <h5 class="card-title">Dusit Thani</h5>
-          <p class="card-text">Punta Egaño Rd., Lapu-lapu City, Cebu</p>
-          <p class="card-text">Starts at Php 7,264!</p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="img/heritage-hotel.png">
-        <div class="card-body">
-          <h5 class="card-title">Heritage Hotel</h5>
-          <p class="card-text">Roxas Boulevard, Pasay, Metro Manila</p>
-          <p class="card-text">Starts at Php 3,248!</p>
-        </div>
-      </div>
+        {{/each}}
     </div>
+    {{else}}
+    <h6>No hotels yet</h6>
+    {{/if}}
 
   </div>
 </div>

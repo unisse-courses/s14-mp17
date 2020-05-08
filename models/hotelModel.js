@@ -14,15 +14,15 @@ const hotelSchema = new mongoose.Schema({
 const hotelModel = mongoose.model('hotels', hotelSchema);
 
 // get all hotels from the collection
-// exports.getAll = function(sort, next) {
-//     hotelModel.find({}).sort(sort).exec(function(hotels) {
+exports.getAll = function(query, next) {
+    hotelModel.find({ }).exec(function(err, hotels) {
 
-//         const hotelObjects = [];
+        const hotelObjects = [];
 
-//         hotels.forEach(function(doc) {
-//             hotelObjects.push(doc.toObject());
-//         });
+        hotels.forEach(function(doc) {
+            hotelObjects.push(doc.toObject());
+        });
 
-//         next(hotelObjects);
-//     });
-// };
+        next(err, hotelObjects);
+    });
+};
