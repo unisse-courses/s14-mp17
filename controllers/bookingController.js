@@ -32,7 +32,7 @@ exports.getUserBookings = function(req, res) {
     const username = req.session.name;
 
     bookingModel.getByUser(username, function(err, bookings) {
-        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings' });
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
     });
 };
 

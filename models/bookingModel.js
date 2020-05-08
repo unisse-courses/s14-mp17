@@ -30,7 +30,7 @@ exports.getAvailable = function(query, next) {
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
-        
+
         next(err, result);
     });
 };
@@ -38,6 +38,8 @@ exports.getAvailable = function(query, next) {
 // get booking by username
 exports.getByUser = function(username, next) {
     bookingModel.find({ username: username }, function(err, bookings) {
+        if (err) throw err;
+
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
