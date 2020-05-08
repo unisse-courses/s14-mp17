@@ -16,6 +16,4 @@ router.get('/search', isPrivate, bookingController.searchBooking);
 
 router.post('/usercreatebooking', isPrivate, bookingController.getAllAvailable);
 
-//router.post('/usermanagebooking', isPrivate, bookingController.getUserBookings);
-
 module.exports = router;
