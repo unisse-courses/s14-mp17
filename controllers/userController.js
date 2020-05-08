@@ -173,11 +173,11 @@ exports.searchUser = function(req, res) {
     });
 };
 
-exports.deleteUser = (req, res) => {
-  const query = req.body.name;
+// exports.deleteUser = (req, res) => {
+//   const query = req.body.name;
 
-  userModel.delete(query, function(users) {
-    if(err) throw err;
-    res.send(users);
-  });
-};
+//   userModel.delete(query, function(users) {
+//     if(err) throw err;
+//     res.send(users);
+//   });
+// };
