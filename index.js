@@ -38,8 +38,8 @@ app.engine('hbs', exphbs({
   
   helpers: {
     dateformat: function(context, block) {
-      var f = block.hash.format || "MMMM DD YYYY, h:mm a";
-      return moment(new Date(context), "YYYY-MM-DDTHH:mm:ss.SSSZ").format(f);
+      var f = block.hash.format || "MMMM DD YYYY";
+      return moment(new Date(context), "YYYY-MM-DD").format(f);
     }
   }
 }));
