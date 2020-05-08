@@ -8,6 +8,7 @@ exports.getAllBookings = (req, res) => {
 };
 
 exports.getAllAvailable = function(req, res) {
+
     bookingModel.getAvailable({ hotelname: req.body.hotelname, capacity: req.body.capacity, status: 'Available' }, function(err, bookings) {
         if(err) throw err;
 
@@ -17,7 +18,7 @@ exports.getAllAvailable = function(req, res) {
             bookingObjects.push(doc.toObject());
         });
         
-        res.render('searchresults', { bookings });
+        res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });
 };
 
