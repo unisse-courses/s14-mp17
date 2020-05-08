@@ -16,7 +16,6 @@ const hotelModel = mongoose.model('hotels', hotelSchema);
 // get all hotels from the collection
 exports.getAll = function(next) {
     hotelModel.find({}).exec(function(result) {
-        if (err) throw err;
 
         const hotelObjects = [];
 
@@ -24,17 +23,6 @@ exports.getAll = function(next) {
             hotelObjects.push(doc.toObject());
         });
 
-        next(hotelObjects);
-    });
-};
-
-// search a hotel
-exports.search = function(query, next) {
-    hotelModel.find(query, function(err, hotels) {
-        var hotelObjects = [];
-        result.forEach(function(doc) {
-            hotelObjects.push(doc.toObject());
-        });
         next(hotelObjects);
     });
 };
