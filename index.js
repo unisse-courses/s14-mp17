@@ -38,7 +38,7 @@ app.engine('hbs', exphbs({
   
   helpers: {
     dateformat: function(context, block) {
-      var f = block.hash.format || "MMMM DD YYYY";
+      var f = block.hash.format || "MMMM DD, YYYY";
       if(f == "December 31, 1999")
       {
         f = " ";
