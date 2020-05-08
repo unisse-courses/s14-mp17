@@ -3,9 +3,9 @@ const bookingController = require('../controllers/bookingController');
 const userController = require('../controllers/userController');
 const { isPrivate } = require('../middlewares/checkAuth.js');
 
-router.get('/adminmanagebookings', isPrivate, bookingController.getAllBookings);
+router.get('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
 
-router.get('/adminmanageusers', isPrivate, userController.getAllUsers);
+router.get('/adminmanageuser', isPrivate, userController.getAllUsers);
 
 
 // router.get('/:id', isPrivate, userController.deleteUser);
