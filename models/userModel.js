@@ -48,8 +48,8 @@ exports.search = function(query, next) {
     });
 };
 
-exports.delete = function(name, next) {
-    userModel.deleteOne(name, function(err, result) {
-        next(err, result);
-    });
-};
+// exports.delete = function(name, next) {
+//     userModel.deleteOne(name, function(err, result) {
+//         next(err, result);
+//     });
+// };

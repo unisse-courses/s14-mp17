@@ -1,6 +1,7 @@
 const mongoose = require('./connection');
 
 const bookingSchema = new mongoose.Schema({
+    _id: { type: Number, required: true },
     name: { type: String, required: true },
     username: { type: String, required: true },
     checkIn: { type: Date, required: true },    
