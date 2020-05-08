@@ -132,7 +132,7 @@ exports.adminLogin = (req, res) => {
               req.session.user = user._id;
               req.session.name = user.name;
 
-              res.redirect('/admin/manage_bookings');
+              res.redirect('/adminmanagebooking');
             } 
             else
             {
