@@ -31,8 +31,8 @@ exports.getAllAvailable = function(req, res) {
 exports.getUserBookings = function(req, res) {
     const username = req.session.name;
 
-    bookingModel.getByUser(username, function(bookings) {
-        res.send(bookings);
+    bookingModel.getByUser(username, function(err, bookings) {
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings' });
     });
 };
 

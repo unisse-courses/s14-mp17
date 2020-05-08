@@ -12,8 +12,6 @@ const bookingSchema = new mongoose.Schema({
 
 const bookingModel = mongoose.model('bookings', bookingSchema);
 
-module.exports = bookingModel;
-
 // get all bookings from the collection
 exports.getAll = function(sort, next) {
     bookingModel.find({}).sort(sort).exec(function(err, result) {
@@ -46,7 +44,7 @@ exports.getByUser = function(username, next) {
             bookingObjects.push(doc.toObject());
         });
         
-        next(err, bookings);
+        next(err, bookingObjects);
     });
 };
 
