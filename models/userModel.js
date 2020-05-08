@@ -8,8 +8,8 @@ const userSchema = new mongoose.Schema({
 
 const userModel = mongoose.model('users', userSchema);
 
-exports.getAll = function(sort, next) {
-    userModel.find({}).sort(sort).exec(function(users) {
+exports.getAll = function(query, next) {
+    userModel.find({}).exec( function(err, users) {
 
         const userObjects = [];
 
@@ -17,7 +17,7 @@ exports.getAll = function(sort, next) {
             userObjects.push(doc.toObject());
         });
 
-        next(userObjects);
+        next(err, userObjects);
     });
 };
 

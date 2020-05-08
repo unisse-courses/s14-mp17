@@ -1,8 +1,8 @@
 const bookingModel = require('../models/bookingModel');
 
-exports.getAllBookings = (req, res) => {
-
-    bookingModel.getAll( function(bookings) {
+exports.getAllBookings = function(req, res) {
+    const username = req.session.name;
+    bookingModel.getAll(username, function(err, bookings) {
         res.render('adminmanagebooking', { title: 'Manage Users Bookings', bookings: bookings });
     });
 };
@@ -14,7 +14,7 @@ exports.getAllAvailable = function(req, res) {
 
     const query = hotelname + ", " + capacity + ", " + status;
 
-    bookingModel.getAvailable(query, function(err, bookings) {
+    bookingModel.getAvailable({ query }, function(err, bookings) {
         if(err) throw err;
 
         const bookingObjects = [];
@@ -29,7 +29,6 @@ exports.getAllAvailable = function(req, res) {
 
 exports.getUserBookings = function(req, res) {
     const username = req.session.name;
-
     bookingModel.getByUser(username, function(err, bookings) {
         res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
     });
