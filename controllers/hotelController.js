@@ -1,7 +1,7 @@
 const hotelModel = require('../models/hotelModel');
 
 exports.getAllHotels = function(req, res) {
-
+    
     hotelModel.getAll({}, function(hotels) {
         res.render('home', {title: 'Find your ideal hotel at an affordable price!', hotels: hotels});
     });
