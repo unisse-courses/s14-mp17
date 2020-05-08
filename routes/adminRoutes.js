@@ -12,12 +12,12 @@ router.get('/adminmanageuser', isPrivate, (req, res) => {
 });
 
 
-router.get('/:id', isPrivate, userController.deleteUser);
+// router.get('/:id', isPrivate, userController.deleteUser);
 
-router.post('/search', isPrivate, userController.searchUser);
+// router.post('/search', isPrivate, userController.searchUser);
 
-router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
+// router.post('/adminmanagebooking', isPrivate, bookingController.getAllBookings);
 
-router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
+// router.post('/adminmanageuser', isPrivate, userController.getAllUsers);
 
 module.exports = router;
