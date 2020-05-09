@@ -49,7 +49,9 @@ exports.createNewBooking = (update_query, callback) => {
 };
 
 exports.searchBooking = function(req, res) {
-    bookingModel.search(req.body.userSearchID, function(result) {
-        res.send(result);
+    const booking_id = req.body.userSearchID;
+
+    bookingModel.search(booking_id, function(err, booking) {
+        res.send(booking);
     })
 }

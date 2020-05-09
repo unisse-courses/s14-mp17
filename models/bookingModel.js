@@ -36,11 +36,19 @@ exports.getAvailable = function(query, next) {
     });
 };
 
-// get booking by username
 exports.getByUser = function(username, next) {
     bookingModel.find({ username: username }, function(err, bookings) {
         if (err) throw err;
+        const bookingObjects = [];
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+        next(err, bookingObjects);
+    });
+};
 
+exports.getByHotel = function(hotelname, next) {
+    bookingModel.find({ hotelname: hotelname }).sort({name: 1}).exec(function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
@@ -51,29 +59,16 @@ exports.getByUser = function(username, next) {
     });
 };
 
-// get booking by hotel name
-exports.getByHotel = function(hotelname, next) {
-    bookingModel.find({ hotelname: hotelname }).sort({name: 1}).exec(function(err, bookings) {
+// search a booking
+exports.search = function(query, next) {
+    bookingModel.findOne({_id: query}, function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
             bookingObjects.push(doc.toObject());
         });
-        
-        next(err, bookings);
-    });
-};
 
-// search a booking
-exports.search = function(query, next) {
-    bookingModel.find({_id: query}, function(err, result) {
-        const bookingObjects = [];
-
-        result.forEach(function(doc) {
-            bookingObjects.push(doc.toObject());
-        });
-
-        next(err, result);
+        next(err, bookingObjects);
     });
 };
 

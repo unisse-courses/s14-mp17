@@ -8,7 +8,7 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
-const moment = require('moment');
+//const moment = require('moment');
 
 // imports for deployment
 const { envPort, sessionKey } = require('./config');
@@ -62,7 +62,7 @@ app.use(express.static('public'));
 
 // sessions - server configuration
 app.use(session({
-  secret: sessionKey, //'somegibberishsecret',
+  secret: /*sessionKey,*/ 'somegibberishsecret',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: true,
