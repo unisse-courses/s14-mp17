@@ -24,7 +24,14 @@ exports.getUserBookings = function(req, res) {
     });
 };
 
-exports.getBookingByName = function(req, res) {
+exports.searchBooking = function(req, res) {
+    const booking_id = req.body.userSearchID;
+    bookingModel.search(booking_id, function(err, booking) {
+        res.send(booking);
+    });
+};
+
+exports.getBookingByHotel = function(req, res) {
     const hotelname = req.body.hotelSearch;
 
     bookingModel.getByHotel(hotelname, function(bookings) {
@@ -47,11 +54,3 @@ exports.createNewBooking = (update_query, callback) => {
         callback(bookingObjects);
     });
 };
-
-exports.searchBooking = function(req, res) {
-    const booking_id = req.body.userSearchID;
-
-    bookingModel.search(booking_id, function(err, booking) {
-        res.send(booking);
-    })
-}

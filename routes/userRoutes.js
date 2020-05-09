@@ -12,7 +12,7 @@ router.get('/usercreatebooking', isPrivate, (req, res) => {
     res.render('usercreatebooking', { title: 'Search Results'});
 });
 
-router.get('/search', isPrivate, bookingController.searchBooking);
+router.post('/usermanagebooking', isPrivate, bookingController.searchBooking);
 
 router.post('/usercreatebooking', isPrivate, bookingController.getAllAvailable);
 
