@@ -27,7 +27,7 @@ exports.getUserBookings = function(req, res) {
 exports.searchBooking = function(req, res) {
     const booking_id = req.body.userSearchID;
     bookingModel.search(booking_id, function(err, booking) {
-        res.send(booking);
+        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
     });
 };
 
