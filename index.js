@@ -62,7 +62,8 @@ app.use(express.static('public'));
 
 // sessions - server configuration
 app.use(session({
-  secret: sessionKey, //'somegibberishsecret',
+  secret: sessionKey, 
+  // secret: 'somegibberishsecret',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: true,

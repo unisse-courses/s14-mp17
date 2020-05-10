@@ -2,8 +2,8 @@ const bookingModel = require('../models/bookingModel');
 
 // get all bookings
 exports.getAllBookings = function(req, res) {
-    const username = req.session.name;
-    bookingModel.getAll(username, function(err, bookings) {
+    const hotelname = req.body.hotelname;
+    bookingModel.getAll(hotelname, function(err, bookings) {
         res.render('adminmanagebooking', { title: 'Manage Users Bookings', bookings: bookings });
     });
 };
@@ -11,7 +11,6 @@ exports.getAllBookings = function(req, res) {
 // get only available bookings given a hotel
 exports.getAllAvailable = function(req, res) {
     const hotelname = req.body.hotelname;
-
     bookingModel.getAvailable(hotelname, function(err, bookings) {
         res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });
@@ -26,16 +25,15 @@ exports.getUserBookings = function(req, res) {
 
 exports.searchBooking = function(req, res) {
     const booking_id = req.body.userSearchID;
-    bookingModel.search(booking_id, function(err, booking) {
+    bookingModel.search(booking_id, function(err, bookings) {
         res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
     });
 };
 
 exports.getBookingByHotel = function(req, res) {
     const hotelname = req.body.hotelSearch;
-
-    bookingModel.getByHotel(hotelname, function(bookings) {
-        res.send(bookings);
+    bookingModel.getByHotel(hotelname, function(err, bookings) {
+        res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });
 };
 

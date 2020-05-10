@@ -3,6 +3,6 @@ const bookingController = require('../controllers/bookingController');
 const { isPublic } = require('../middlewares/checkAuth.js');
 
 // GET routes
-router.get('/searchresults', isPublic, bookingController.getAllAvailable);
+router.get('/searchresults', isPublic, bookingController.getBookingByHotel);
 
 module.exports = router;
