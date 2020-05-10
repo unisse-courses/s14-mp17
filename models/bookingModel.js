@@ -48,7 +48,7 @@ exports.getByUser = function(username, next) {
 };
 
 exports.getByHotel = function(hotelname, next) {
-    bookingModel.find({ hotelname: hotelname }).sort({name: 1}).exec(function(err, bookings) {
+    bookingModel.find({ hotelname: 'Dusit Thani', status: 'Available' }).sort({name: 1}).exec(function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
