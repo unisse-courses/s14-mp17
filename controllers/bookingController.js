@@ -31,7 +31,8 @@ exports.searchBooking = function(req, res) {
 };
 
 exports.getBookingByHotel = function(req, res) {
-    const hotelname = req.body.hotelSearch;
+    const hotelname = req.session.hotelSearch;
+    console.log(hotelname);
     bookingModel.getByHotel(hotelname, function(err, bookings) {
         res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });

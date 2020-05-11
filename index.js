@@ -8,7 +8,7 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
-// const moment = require('moment');
+const moment = require('moment');
 
 // imports for deployment
 const { envPort, sessionKey } = require('./config');
@@ -24,11 +24,6 @@ const adminRouter = require('./routes/adminRoutes');
 const app = express();
 const port = envPort || 3000;
 
-// listen to the port provided
-app.listen(port, () => {
-  console.log('App listening at port ' + port);
-});
-
 // create an engine called hbs using the express-handlebars
 app.engine('hbs', exphbs({
   extname: 'hbs',
@@ -36,16 +31,17 @@ app.engine('hbs', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials'),
   
-  // helpers: {
-  //   dateformat: function(context, block) {
-  //     var f = block.hash.format || "MMMM DD, YYYY";
-  //     if(f == "December 31, 1999")
-  //     {
-  //       f = " ";
-  //     }
-  //     return moment(new Date(context), "YYYY-MM-DD").format(f);
-  //   }
-  // }
+  helpers: {
+    dateformat: function(context, block) {
+      var x = " ";
+      var f = block.hash.format || "MMMM DD, YYYY";
+      if(f == "December 31, 1999")
+      {
+        return x.toString();
+      }
+      return moment(new Date(context), "YYYY-MM-DD").format(f);
+    }
+  }
 }));
 
 // set the view engine to the express-handlebar engine
@@ -57,13 +53,10 @@ app.use(bodyParser.urlencoded({
   extended: true 
 }));
 
-// serve static files
-app.use(express.static('public'));
-
 // sessions - server configuration
 app.use(session({
-  // secret: sessionKey, 
-  secret: 'somegibberishsecret',
+  secret: sessionKey, 
+  // secret: 'somegibberishsecret',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: true,
@@ -86,3 +79,11 @@ app.use('/', indexRouter); // main/home route
 app.use('/', searchResultsRouter); // search results
 app.use('/', userRouter); // user routes when user is logged in
 app.use('/', adminRouter); // admin routes
+
+// serve static files
+app.use(express.static('public'));
+
+// listen to the port provided
+app.listen(port, () => {
+  console.log('App listening at port ' + port);
+});

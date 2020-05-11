@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const { dbURL } = require('../config');
-//const dbURL = "mongodb+srv://admin:1234@ccapdev-test-vqhod.mongodb.net/hotelmedb?retryWrites=true&w=majority";
+// const dbURL = "mongodb+srv://admin:1234@ccapdev-test-vqhod.mongodb.net/hotelmedb?retryWrites=true&w=majority";
 
 const options = {
     useNewUrlParser: true,
@@ -11,6 +11,5 @@ const options = {
 };
 
 mongoose.connect(dbURL, options);
-console.log(mongoose.connection.readyState);
 
 module.exports = mongoose;
