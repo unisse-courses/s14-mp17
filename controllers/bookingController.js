@@ -1,4 +1,5 @@
 const bookingModel = require('../models/bookingModel');
+const { validationResult } = require('express-validator');
 
 // get all bookings
 exports.getAllBookings = function(req, res) {
@@ -25,14 +26,15 @@ exports.getUserBookings = function(req, res) {
 
 exports.searchBooking = function(req, res) {
     const booking_id = req.body.userSearchID;
-    bookingModel.search(booking_id, function(err, bookings) {
-        res.render('usermanagebooking', { title: 'Dashboard: Manage Your Bookings', bookings: bookings });
+    console.log(booking_id);
+    bookingModel.getByHotel(booking_id, function(err, bookings) {
+        res.render('usercreatebooking', { title: 'Search Results', bookings: bookings});
     });
 };
 
 exports.getBookingByHotel = function(req, res) {
-    const hotelname = req.session.hotelSearch;
-    console.log(hotelname);
+    const hotelname = req.body.hotelsearch;
+    console.log(req.body);
     bookingModel.getByHotel(hotelname, function(err, bookings) {
         res.render('searchresults', { title: 'Search Results', bookings: bookings });
     });

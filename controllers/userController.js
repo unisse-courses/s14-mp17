@@ -51,10 +51,12 @@ exports.registerUser = (req, res) => {
 
 exports.loginUser = (req, res) => {
   const errors = validationResult(req);
+  // console.log(errors);
 
   if(errors.isEmpty()) 
   {
     const { email, password } = req.body;
+    console.log(req.body.email);
 
     userModel.getOne({ email: email }, (err, user) => {
       if(err)
@@ -71,7 +73,6 @@ exports.loginUser = (req, res) => {
             {
               req.session.user = user._id;
               req.session.name = user.name;
-              console.log(req.session);
               res.redirect('/usermanagebooking');
             } 
             else

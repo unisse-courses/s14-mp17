@@ -48,7 +48,7 @@ exports.getByUser = function(username, next) {
 };
 
 exports.getByHotel = function(hotelname, next) {
-    bookingModel.find({ hotelname: 'Belmont Hotel', status: 'Available' }).sort({name: 1}).exec(function(err, bookings) {
+    bookingModel.find({ status: 'Available' }).sort({name: 1}).exec(function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {

@@ -7,21 +7,28 @@
     <form action="/searchresults">
       <table class="table table-borderless">
         <tr>
-          <td><label>Select a Hotel</label></td>
-          <td><label>Check In</label></td>
-          <td><label>Check Out</label></td>
-          <td><label>Capacity</label></td>
+          <td>
+            <label>Select a Hotel</label>
+            </td>
+          <td>
+            <label>Check In</label>
+            </td>
+          <td>
+            <label>Check Out</label>
+            </td>
+          <td>
+            <label>Capacity</label>
+            </td>
         </tr>
         <tr>
           <td>
-            <input class="form-control" type="text" placeholder="Enter Hotel Name" aria-label="Search" id="hotelSearch" name="hotelSearch">
-
-            {{!-- <select class="form-control" id="hotelSearch" name="hotelSearch">
+            {{!-- <input class="form-control" type="search" placeholder="Enter Hotel Name" aria-label="Search" id="hotelsearch" name="hotelsearch"> --}}
+            <select class="form-control" id="hotelSearch" name="hotelSearch">
               <option value="Bayfront Hotel" name="Bayfront Hotel">Bayfront Hotel</option>
               <option value="Belmont Hotel" name="Belmont Hotel">Belmont Hotel</option>
               <option value="Dusit Thani" name="Dusit Thani">Dusit Thani</option>
               <option value="Heritage Hotel" name="Heritage Hotel">Heritage Hotel</option>
-            </select> --}}
+            </select>
           </td>
           <td class="dates">
             <input type="date" name="checkin" class="form-control" id="checkin">

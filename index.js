@@ -8,7 +8,7 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
-const moment = require('moment');
+// const moment = require('moment');
 
 // imports for deployment
 const { envPort, sessionKey } = require('./config');
@@ -31,17 +31,17 @@ app.engine('hbs', exphbs({
   layoutsDir: path.join(__dirname, '/views/layouts'),
   partialsDir: path.join(__dirname, '/views/partials'),
   
-  helpers: {
-    dateformat: function(context, block) {
-      var x = " ";
-      var f = block.hash.format || "MMMM DD, YYYY";
-      if(f == "December 31, 1999")
-      {
-        return x.toString();
-      }
-      return moment(new Date(context), "YYYY-MM-DD").format(f);
-    }
-  }
+  // helpers: {
+  //   dateformat: function(context, block) {
+  //     var x = " ";
+  //     var f = block.hash.format || "MMMM DD, YYYY";
+  //     if(f === "December 31, 1999")
+  //     {
+  //       return x.toString();
+  //     }
+  //     return moment(new Date(context), "YYYY-MM-DD").format(f);
+  //   }
+  // }
 }));
 
 // set the view engine to the express-handlebar engine
@@ -55,8 +55,8 @@ app.use(bodyParser.urlencoded({
 
 // sessions - server configuration
 app.use(session({
-  secret: sessionKey, 
-  // secret: 'somegibberishsecret',
+  // secret: sessionKey, 
+  secret: 'somegibberishsecret',
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: true,

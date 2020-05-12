@@ -13,11 +13,11 @@
         <div class="row">
         {{#each bookings}}
             <div class="card">
-                <div class="card-header">{{status}}</div>
                 <div class="card-body">
-                    <h5 class="card-title">{{name}}</h5>
-                    <p class="card-text">{{description}}</p>
-                    <a href="/register" class="btn btn-primary">Book Now!</a>
+                    <h5 class="card-title">{{ hotelname }}</h5>
+                    <p class="card-text">Booking Number: {{ _id }}</p>
+                    <p class="card-text">Status: {{ status }}</p>
+                    <button class="btn btn-primary">Book Now!</button>
                 </div>
             </div>
         {{/each}}
