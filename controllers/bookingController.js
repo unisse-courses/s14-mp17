@@ -15,6 +15,7 @@ exports.getUserBookings = function(req, res) {
     });
 };
 
+
 exports.searchBookingByName = function(req, res) {
     const hotelname = req.body.hotelname;
     console.log(hotelname);
@@ -31,13 +32,13 @@ exports.searchBookingById = function(req, res) {
     });
 };
 
-// // get only available bookings given a hotel
-// exports.getAllAvailable = function(req, res) {
-//     const hotelname = req.body.hotelname;
-//     bookingModel.getAvailable(hotelname, function(err, bookings) {
-//         res.render('searchresults', { title: 'Search Results', bookings: bookings });
-//     });
-// };
+// get only available bookings given a hotel
+exports.getAllAvailable = function(req, res) {
+    const hotelname = req.body.hotelname;
+    bookingModel.getAvailable(hotelname, function(err, bookings) {
+        res.render('searchresults', { title: 'Search Results', bookings: bookings });
+    });
+};
 
 
 // exports.searchBooking = function(req, res) {

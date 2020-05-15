@@ -4,8 +4,8 @@
   <div class="col-sm-12">
     <h4>{{title}}</h4>
     <p>From cozy rooms and warm baths to great food and funky cities.</p>
-    <form action="/" method="POST">
-      <div class="row">
+    <form action="/searchresults" method="POST">
+      {{!-- <div class="row">
         <div class="col s12">
           <input placeholder="Hotel Name" type="text" id="hotelname" name="hotelname">
         </div>
@@ -14,9 +14,8 @@
         <div class="col s12">
           <button class="btn btn-primary form-button">Search</button>
         </div>
-      </div>
-
-      {{!-- <table class="table table-borderless">
+      </div> --}}
+      <table class="table table-borderless">
         <tr>
           <td>
             <label>Select a Hotel</label>
@@ -33,7 +32,6 @@
         </tr>
         <tr>
           <td>
-            <input class="form-control" type="search" placeholder="Enter Hotel Name" aria-label="Search" id="hotelsearch" name="hotelsearch">
             <select class="form-control" id="hotelSearch" name="hotelSearch">
               <option value="Bayfront Hotel" name="Bayfront Hotel">Bayfront Hotel</option>
               <option value="Belmont Hotel" name="Belmont Hotel">Belmont Hotel</option>
@@ -59,7 +57,7 @@
             <button class="btn btn-primary" id="showSearchBooking" type="submit">Search</button>
           </td>
         </tr>
-      </table> --}}
+      </table>
     </form>
   </div>
 </div>

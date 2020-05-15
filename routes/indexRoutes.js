@@ -12,6 +12,6 @@ router.get('/about', isPublic, (req, res) => {
 });
 
 // POST 
-router.post('/', isPublic, bookingController.searchBookingByName);
+// router.post('/', isPublic, bookingController.searchBookingByName);
 
 module.exports = router;
