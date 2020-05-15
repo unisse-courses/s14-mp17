@@ -28,7 +28,7 @@ exports.searchBookingById = function(req, res) {
     const booking_id = req.body.bookingid;
     console.log(booking_id);
     bookingModel.searchId(booking_id, function(err, bookings) {
-        res.send(bookings);
+        res.redirect('/usermanagebooking/search');
     });
 };
 
@@ -41,21 +41,13 @@ exports.getAllAvailable = function(req, res) {
 };
 
 
-// exports.searchBooking = function(req, res) {
-//     const booking_id = req.body.userSearchID;
-//     console.log(booking_id);
-//     bookingModel.getByHotel(booking_id, function(err, bookings) {
-//         res.render('usercreatebooking', { title: 'Search Results', bookings: bookings});
-//     });
-// };
-
-// exports.getBookingByHotel = function(req, res) {
-//     const hotelname = req.body.hotelsearch;
-//     console.log(req.body);
-//     bookingModel.getByHotel(hotelname, function(err, bookings) {
-//         res.render('searchresults', { title: 'Search Results', bookings: bookings });
-//     });
-// };
+exports.searchBooking = function(req, res) {
+    const booking_id = req.body.userSearchID;
+    console.log(booking_id);
+    bookingModel.getByHotel(booking_id, function(err, bookings) {
+        res.render('usercreatebooking', { title: 'Search Results', bookings: bookings});
+    });
+};
 
 exports.createNewBooking = (update_query, callback) => {
     const booking_id = req.body.userSearchID;
