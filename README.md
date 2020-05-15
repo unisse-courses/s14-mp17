@@ -37,6 +37,9 @@
         - email: mariaclara@email.com
         - password: password
 
-### Note
-Dates in the Admin Page that are `December 31, 1999` means that the booking is still available.
+### Notes
+- Dates in the Admin Page that are `December 31, 1999` means that the booking is still available.
 Those dates are subjected to change when the user books an available booking.
+- The `/` (home page) is public. It cannot be viewed by a user already logged in. A user has a 
+separate page to view the same contents of the home page when they choose to `Create Booking` 
+found in their dashboards.
