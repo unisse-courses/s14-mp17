@@ -22,8 +22,17 @@
 ### Credentials
 1. Admin
     - username: admin
-    - password: 12345678
+    - password: pass1234
 2. Users
     - John Smith
         - email: johnsmith@email.com
+        - password: password
+    - Juan Dela Cruz
+        - email: juandelacruz@email.com
+        - password: password
+    - Barbara Doe
+        - email: barbaradoe@email.com
+        - password: password
+    - Maria Clara
+        - email: mariaclara@email.com
         - password: password

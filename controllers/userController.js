@@ -9,6 +9,8 @@ exports.registerUser = (req, res) => {
   {
     const { name, email, password } = req.body;
 
+    console.log(req.body.hotelname);
+    
     userModel.getOne({ email: email }, (err, result) => {
       if (result) 
       {

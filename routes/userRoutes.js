@@ -8,7 +8,9 @@ router.get('/usersearchbooking', isPrivate, (req, res) => {
     res.render('usersearchbooking', {title: 'Search an Available Booking'});
 });
 
-router.get('/usercreatebooking', isPrivate, bookingController.searchBooking);
+router.post('/usermanagebooking', isPrivate, bookingController.searchBookingById);
+
+// router.get('/usercreatebooking', isPrivate, bookingController.searchBooking);
 
 // router.post('/usermanagebooking', isPrivate, bookingController.searchBooking);
 

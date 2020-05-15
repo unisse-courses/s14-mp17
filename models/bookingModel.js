@@ -59,9 +59,20 @@ exports.getByHotel = function(hotelname, next) {
     });
 };
 
-// search a booking
-exports.search = function(query, next) {
-    bookingModel.findOne({_id: query}, function(err, bookings) {
+exports.searchName = function(hotelname, next) {
+    bookingModel.find({ hotelname: hotelname }, function(err, bookings) {
+        const bookingObjects = [];
+
+        bookings.forEach(function(doc) {
+            bookingObjects.push(doc.toObject());
+        });
+
+        next(err, bookingObjects);
+    });
+}
+
+exports.searchId = function(booking_id, next) {
+    bookingModel.findOne({_id: booking_id}, function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
@@ -72,16 +83,29 @@ exports.search = function(query, next) {
     });
 };
 
-// update a booking
-exports.updateBooking = function(booking_id, update_query) {
-    bookingModel.findOneAndUpdate({_id: booking_id}, update_query, function(err, result) {
-        next(err, result);
-    });
-};
+// // search a booking
+// exports.search = function(query, next) {
+//     bookingModel.findOne({_id: query}, function(err, bookings) {
+//         const bookingObjects = [];
 
-// delete a booking
-exports.deleteBooking = function(booking_id, next) {
-    bookingModel.deleteOne({_id: booking_id}, function(err, result) {
-        next(err, result);
-    });
-};
+//         bookings.forEach(function(doc) {
+//             bookingObjects.push(doc.toObject());
+//         });
+
+//         next(err, bookingObjects);
+//     });
+// };
+
+// // update a booking
+// exports.updateBooking = function(booking_id, update_query) {
+//     bookingModel.findOneAndUpdate({_id: booking_id}, update_query, function(err, result) {
+//         next(err, result);
+//     });
+// };
+
+// // delete a booking
+// exports.deleteBooking = function(booking_id, next) {
+//     bookingModel.deleteOne({_id: booking_id}, function(err, result) {
+//         next(err, result);
+//     });
+// };
