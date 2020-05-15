@@ -36,3 +36,7 @@
     - Maria Clara
         - email: mariaclara@email.com
         - password: password
+
+### Note
+Dates in the Admin Page that are `December 31, 1999` means that the booking is still available.
+Those dates are subjected to change when the user books an available booking.
