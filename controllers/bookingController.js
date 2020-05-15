@@ -44,7 +44,7 @@ exports.getAllAvailable = function(req, res) {
 exports.searchBooking = function(req, res) {
     const booking_id = req.body.userSearchID;
     console.log(booking_id);
-    bookingModel.getByHotel(booking_id, function(err, bookings) {
+    bookingModel.getAvailable(booking_id, function(err, bookings) {
         res.render('usercreatebooking', { title: 'Search Results', bookings: bookings});
     });
 };
