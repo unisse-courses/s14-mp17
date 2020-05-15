@@ -26,7 +26,7 @@ exports.getAll = function(query, next) {
 
 exports.getAvailable = function(query, next) {
 
-    bookingModel.find({ hotelname: query, status: 'Available' }).exec(function(err, bookings) {
+    bookingModel.find({ status: 'Available' }).exec(function(err, bookings) {
         if(err) throw err;
         const bookingObjects = [];
         bookings.forEach(function(doc) {
@@ -48,7 +48,7 @@ exports.getByUser = function(username, next) {
 };
 
 exports.getByHotel = function(hotelname, next) {
-    bookingModel.find({ status: 'Available' }).sort({name: 1}).exec(function(err, bookings) {
+    bookingModel.find({ hotelname: hotelname }).sort({name: 1}).exec(function(err, bookings) {
         const bookingObjects = [];
 
         bookings.forEach(function(doc) {
